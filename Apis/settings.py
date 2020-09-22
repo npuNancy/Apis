@@ -26,7 +26,8 @@ secKeyPath = os.path.join(BASE_DIR, 'SECRET_KEY')
 if os.path.exists(secKeyPath):
     SECRET_KEY = open(secKeyPath).read().strip()
 else:
-    import random, string
+    import random
+    import string
 
     generator = string.ascii_letters + string.digits + string.punctuation
     SECRET_KEY = ''.join(random.choices(generator, k=256))
@@ -44,7 +45,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'common',
-    'StringStorage',
+    'specificApis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
