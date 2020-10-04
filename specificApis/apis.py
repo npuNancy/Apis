@@ -208,8 +208,6 @@ def userAdd(request):
             "reason": "error reason here"
         }
     """
-    if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')

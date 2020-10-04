@@ -7,11 +7,12 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 """
 
+
 import os
 import sys
-
-from os.path import join, dirname, abspath
+sys.path.append("/usr/local/lib/python3.8/dist-packages")
 from django.core.wsgi import get_wsgi_application
+from os.path import join, dirname, abspath
 
 
 PROJECT_DIR = dirname(dirname(abspath(__file__)))
