@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% block title %}更改密码{% endblock title %} {% block m-content %}
+<div class="m-portlet m-portlet--tab">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <span class="m-portlet__head-icon m--hide">
+                    <i class="la la-gear"></i>
+                </span>
+                <h3 class="m-portlet__head-text">
+                    更改密码
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!--begin::Form-->
+    <form class="m-form m-form--fit m-form--label-align-right">
+        <div class="m-portlet__body">
+            <div class="form-group m-form__group">
+                <label>
+                    输入旧的密码
+                </label>
+                <input type="password" class="form-control m-input m-input--air" id="password-old" placeholder="Password">
+            </div>
+            <div class="form-group m-form__group">
+                <label>
+                    输入新的密码
+                </label>
+                <input type="password" class="form-control m-input m-input--air" id="password1" placeholder="Password">
+            </div>
+            <div class="form-group m-form__group">
+                <label>
+                    再次输入密码
+                </label>
+                <input type="password" class="form-control m-input m-input--air" id="password2" placeholder="Password">
+            </div>
+        </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <button type="reset" class="btn btn-accent">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+    <!--end::Form-->
+</div>
+{% endblock m-content %}
+
+<!--start::ext js  -->
+{% block ext_js %}
+<script src="{% static 'SelfStudySystem/assets/innovation/pages/changePass/changePass.js' %}"></script>
+{% endblock ext_js %}
+<!--end::ext js  -->

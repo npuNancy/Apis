@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% load static %} {% block title %}首页{% endblock title %} {% block m-content %}
+<!--start::Portlet-->
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    达标人数/总人数：
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <!--begin::Section-->
+        <div class="m-section">
+            <div class="m-section__content">
+                <table class="table table-striped m-table">
+                    <thead>
+                        <tr>
+                            <th>班号</th>
+                            <th>平均自习时长(小时)</th>
+                            <th>达标人数</th>
+                            <th>总人数</th>
+                        </tr>
+                    </thead>
+                    <tbody id='tbody'>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--end::Section-->
+    </div>
+    <!--end::Form-->
+</div>
+<!--end::Portlet-->
+{% endblock m-content %}
+
+
+<!--start::ext js  -->
+{% block ext_js %}
+<script src="{% static 'SelfStudySystem/assets/innovation/pages/index/index.js' %}"></script>
+{% endblock ext_js %}
+<!--end::ext js  -->

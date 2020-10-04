@@ -17,7 +17,7 @@ class Classes(models.Model):
 
 class User(models.Model):
     username = models.CharField(max_length=20, db_index=True, unique=True)
-    password = models.CharField(max_length=20)
+    password = models.CharField(max_length=100)
     classNumber = models.CharField(max_length=20, db_index=True, unique=True)
 
 
@@ -25,6 +25,9 @@ class Student(models.Model):
     studentId = models.CharField(max_length=20, db_index=True, unique=True)
     name = models.CharField(max_length=20, db_index=True)
     sex = models.IntegerField(default=0)
+    state = models.IntegerField(default=0)
+    initPoints = models.DecimalField(
+        max_digits=10, decimal_places=5, default=0)
     classNumber = models.ForeignKey(
         'Classes', to_field='classNumber', on_delete=models.CASCADE)
 

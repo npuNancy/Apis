@@ -46,6 +46,8 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'common',
     'specificApis',
+    'SelfStudySystem',
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,6 +86,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Apis.wsgi.application'
 
+# crontabs
+CRONJOBS = [
+    # everyday's 22:30 run script
+    ('34 12 * * *', 'specificApis.function.cron_signOut'),
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% load static %} {% block title %}学生自习记录{% endblock title %} {% block m-content %}
+<!--start::Portlet-->
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="row">
+                <div class="col-xl-3 studentId">学号：{{studentId}}</div>
+                <div class="col-xl-3 name">姓名：</div>
+                <div class="col-xl-3 classId">班级：</div>
+                <div class="col-xl-3 points">总积分：</div>
+                <div class="col-xl-3 number">自习次数：</div>
+                <div class="col-xl-3 allDuration">总时长：</div>
+                <div class="col-xl-3 averTime">平均自习时长：</div>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <!--begin::Section-->
+        <div class="m-section">
+            <div class="m-section__content">
+                <table class="table table-striped m-table">
+                    <thead>
+                        <tr>
+                            <th>状态</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>积分</th>
+                        </tr>
+                    </thead>
+                    <tbody id='tbody'>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--end::Section-->
+    </div>
+    <!--end::Form-->
+</div>
+<!--end::Portlet-->
+{% endblock m-content %}
+
+
+<!--start::ext js  -->
+{% block ext_js %}
+<script src="{% static 'SelfStudySystem/assets/innovation/pages/student/student.js' %}"></script>
+{% endblock ext_js %}
+<!--end::ext js  -->

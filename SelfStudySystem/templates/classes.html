@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %} {% block title %}班级页面{% endblock title %} {% block m-content %}
+<!--start::Portlet-->
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="row">
+                <div class="col-xl-3 classId">班号：{{classNumber}}</div>
+                <div class="col-xl-4 req-people">达标人数/总人数：</div>
+                <div class="col-xl-4 averTime">平均自习时长：</div>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <!--begin::Section-->
+        <div class="m-section">
+            <div class="m-section__content">
+                <table class="table table-striped m-table">
+                    <thead>
+                        <tr>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>自习次数</th>
+                            <th>总积分</th>
+                            <th>总时长</th>
+                            <th>平均自习时长(小时)</th>
+                            <th>免自习</th>
+                        </tr>
+                    </thead>
+                    <tbody id='tbody'>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--end::Section-->
+    </div>
+    <!--end::Form-->
+</div>
+<!--end::Portlet-->
+{% endblock m-content %}
+
+
+<!--start::ext js  -->
+{% block ext_js %}
+<script src="{% static 'SelfStudySystem/assets/innovation/pages/class/class.js' %}"></script>
+{% endblock ext_js %}
+<!--end::ext js  -->

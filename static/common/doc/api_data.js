@@ -102,6 +102,222 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/specificApis/login/login",
+    "title": "login",
+    "version": "1.0.0",
+    "description": "<p>login</p>",
+    "name": "login",
+    "group": "login",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username unique</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"login\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "login",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/login/login"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/login/logout",
+    "title": "logout",
+    "version": "1.0.0",
+    "description": "<p>logout</p>",
+    "name": "logout",
+    "group": "login",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"logout\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "login",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/login/logout"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/show/getAllClass",
+    "title": "getAllClass",
+    "version": "1.0.0",
+    "description": "<p>get this grades's all class info</p>",
+    "name": "getAllClass",
+    "group": "show",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get all class info success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "show",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/show/getAllClass"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/show/getClassData",
+    "title": "getClassData",
+    "version": "1.0.0",
+    "description": "<p>getClassData</p>",
+    "name": "getClassData",
+    "group": "show",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "classNumber",
+            "description": "<p>classNumber</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get all class info success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "show",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/show/getClassData"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/show/getStudentData",
+    "title": "getStudentData",
+    "version": "1.0.0",
+    "description": "<p>getStudentData</p>",
+    "name": "getStudentData",
+    "group": "show",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "studentId",
+            "description": "<p>studentId unique</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get all class info success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "show",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/show/getStudentData"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/specificApis/studentData/askLeave",
     "title": "askLeave",
     "version": "1.0.0",
@@ -144,6 +360,87 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": window.location.origin + "/api/specificApis/studentData/askLeave"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/studentData/getClassStudents",
+    "title": "getClassStudents",
+    "version": "1.0.0",
+    "description": "<p>get this class's students</p>",
+    "name": "getClassStudents",
+    "group": "studentData",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"ask for leave success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "studentData",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/studentData/getClassStudents"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/studentData/getStudentstates",
+    "title": "getStudentStates",
+    "version": "1.0.0",
+    "description": "<p>getStudentStates</p>",
+    "name": "getStudentStates",
+    "group": "studentData",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "studentId",
+            "description": "<p>studentId unique</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"ask for leave success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "studentData",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/studentData/getStudentstates"
       }
     ]
   },
@@ -279,6 +576,20 @@ define({ "api": [
             "optional": false,
             "field": "sex",
             "description": "<p>sex</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "state",
+            "description": "<p>state</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "initPoints",
+            "description": "<p>initial points</p>"
           },
           {
             "group": "Parameter",
@@ -466,26 +777,13 @@ define({ "api": [
     ]
   },
   {
-    "type": "post",
+    "type": "get",
     "url": "/specificApis/test",
     "title": "test",
     "version": "1.0.0",
     "description": "<p>test</p>",
     "name": "test",
     "group": "test",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "username",
-            "description": "<p>username unique</p>"
-          }
-        ]
-      }
-    },
     "success": {
       "examples": [
         {
@@ -509,6 +807,87 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": window.location.origin + "/api/specificApis/test"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/user/checkPass",
+    "title": "checkPass",
+    "version": "1.0.0",
+    "description": "<p>checkPass</p>",
+    "name": "checkPass",
+    "group": "user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"login\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/user/checkPass"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/user/getUsername",
+    "title": "getUsername",
+    "version": "1.0.0",
+    "description": "<p>get username</p>",
+    "name": "getUsername",
+    "group": "user",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get username success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/user/getUsername"
       }
     ]
   },
@@ -591,13 +970,6 @@ define({ "api": [
     "parameter": {
       "fields": {
         "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "username",
-            "description": "<p>username unique</p>"
-          },
           {
             "group": "Parameter",
             "type": "string",
