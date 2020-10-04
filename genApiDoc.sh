@@ -3,7 +3,7 @@
 # remove old api doc
 rm -rf ./common/static/common/doc
 rm -rf ./static/common/doc
-
+rm -rf ./static/SelfStudySystem/assets/innovation
 # npm install -g apidoc
 apidoc -o ./common/static/common/doc
 
@@ -15,4 +15,4 @@ sed -i -e \
 	's/"http:\/\/API-URL/window.location.origin + "/g' \
 	./common/static/common/doc/api_project.js
 
-./manage.py collectstatic --noinput
+python ./manage.py collectstatic --noinput
