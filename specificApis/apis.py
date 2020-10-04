@@ -216,11 +216,11 @@ def userAdd(request):
         # TODO password decode
         password = function.hash(password)
         try:
+            gradeAccount = Grade.objects.get(grade=grade)
             user_Account = User(username=username,
                                 password=password,
                                 classNumber=classNumber)
             user_Account.save()
-            gradeAccount = Grade.objects.get(grade=grade)
             try:
                 class_Account = Classes(classNumber=user_Account,
                                         grade=gradeAccount)
