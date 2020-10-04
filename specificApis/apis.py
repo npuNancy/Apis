@@ -220,8 +220,8 @@ def userAdd(request):
                                 password=password,
                                 classNumber=classNumber)
             user_Account.save()
+            gradeAccount = Grade.objects.get(grade=grade)
             try:
-                gradeAccount = Grade.objects.get(grade=grade)
                 class_Account = Classes(classNumber=user_Account,
                                         grade=gradeAccount)
                 class_Account.save()
