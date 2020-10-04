@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/user/getUsername",
+        url: "http://121.196.42.250/api/specificApis/user/getUsername",
         type: "GET",
         success: function(data) {
             if (data.error) {
@@ -23,14 +23,14 @@ $(document).ready(function() {
 
                 $("#logout").click(function() {
                     $(this).ajaxSubmit({
-                        url: "http://127.0.0.1:8000/api/specificApis/login/logout",
+                        url: "http://121.196.42.250/api/specificApis/login/logout",
                         type: "GET",
                         success: function(data) {
                             if (data.error) {
                                 alert("请求失败！");
                             } else {
                                 console.log("logout success");
-                                window.location.href = "http://127.0.0.1:8000/index";
+                                window.location.href = "http://121.196.42.250/index";
                             }
                         }
                     });

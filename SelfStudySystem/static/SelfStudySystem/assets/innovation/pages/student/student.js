@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var studentId = $('.studentId').text().replace('学号：', '');
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/show/getStudentData",
+        url: "http://121.196.42.250/api/specificApis/show/getStudentData",
         type: "POST",
         data: {
             'studentId': studentId
