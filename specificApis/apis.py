@@ -655,39 +655,42 @@ def getStudentStates(request):
     if request.method == "POST":
         studentId = request.POST.get('studentId')
         dateToday = date.today()
-        if function.checkExist_student(studentId):
-            # student exist
-            student_Account = Student.objects.get(
-                studentId=studentId)
-            flag_askLeave = StudentData.objects.filter(
-                studentId=student_Account, date=dateToday, state=1)
-            if not flag_askLeave:
-                # 今日还没请假
-                flag_notOver = StudentData.objects.filter(
-                    studentId=student_Account, date=dateToday, state=2)
-                if not flag_notOver:
-                    flag_notStart = StudentData.objects.filter(
-                        studentId=student_Account, date=dateToday, state=3)
-                    if not flag_notStart:
-                        return retJson(error=0, state=0)
+        try:
+            if function.checkExist_student(studentId):
+                # student exist
+                student_Account = Student.objects.get(
+                    studentId=studentId)
+                flag_askLeave = StudentData.objects.filter(
+                    studentId=student_Account, date=dateToday, state=1)
+                if not flag_askLeave:
+                    # 今日还没请假
+                    flag_notOver = StudentData.objects.filter(
+                        studentId=student_Account, date=dateToday, state=2)
+                    if not flag_notOver:
+                        flag_notStart = StudentData.objects.filter(
+                            studentId=student_Account, date=dateToday, state=3)
+                        if not flag_notStart:
+                            return retJson(error=0, state=0)
+                        else:
+                            # 今天开始过
+                            st = flag_notStart.values()[0]['startTime'].strftime(
+                                '%Y-%m-%d %H:%M:%S')
+                            et = flag_notStart.values()[0]['endTime'].strftime(
+                                '%Y-%m-%d %H:%M:%S')
+                            points = flag_notStart.values()[0]['points']
+                            return retJson(error=0, state=3, starttime=st, endtime=et, points=points)
                     else:
-                        # 今天开始过
-                        st = flag_notStart.values()[0]['startTime'].strftime(
+                        st = flag_notOver.values()[0]['startTime'].strftime(
                             '%Y-%m-%d %H:%M:%S')
-                        et = flag_notStart.values()[0]['endTime'].strftime(
-                            '%Y-%m-%d %H:%M:%S')
-                        points = flag_notStart.values()[0]['points']
-                        return retJson(error=0, state=3, starttime=st, endtime=et, points=points)
+                        dataId = flag_notOver.values()[0]['id']
+                        # 没结束
+                        return retJson(error=0, state=2, starttime=st, dataId=dataId)
                 else:
-                    st = flag_notOver.values()[0]['startTime'].strftime(
-                        '%Y-%m-%d %H:%M:%S')
-                    dataId = flag_notOver.values()[0]['id']
-                    # 没结束
-                    return retJson(error=0, state=2, starttime=st, dataId=dataId)
+                    return retJson(error=0, state=1)  # 请假
             else:
-                return retJson(error=0, state=1)  # 请假
-        else:
-            return retJson(error=2, reason='Students dont exist')
+                return retJson(error=3, reason='Students dont exist')
+        except Exception as e:
+            return retJson(error=2, reason=str(e))
     else:
         return retJson(error=1, reason='needmethod: post')
 
