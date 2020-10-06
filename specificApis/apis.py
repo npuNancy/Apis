@@ -728,6 +728,34 @@ def getClassStudents(request):
     else:
         return retJson(error=1, reason='needmethod: get')
 
+
+@csrf_exempt
+def signOutCron(request):
+    """
+    @api {get} /specificApis/studentData/signOutCron signOutCron
+    @apiVersion 1.0.0
+    @apiDescription signOutCron
+    @apiName signOutCron
+    @apiGroup signOutCron
+    @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 0,
+            "result": "success"
+        }
+    @apiErrorExample {json} Error-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 1,
+            "reason": "error reason here"
+        }
+    """
+    try:
+        ret = function.cron_signOut()
+        return retJson(error=0, result=ret)
+    except Exception as e:
+        return retJson(error=2, reason=str(e))
+
 # studentData end
 
 

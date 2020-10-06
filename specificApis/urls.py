@@ -19,6 +19,7 @@ urlpatterns = [
     path('studentData/signIn', apis.signIn, name='signIn'),
     path('studentData/signOut', apis.signOut, name='signOut'),
     path('studentData/askLeave', apis.askLeave, name='askLeave'),
+    path('studentData/signOutCron', apis.signOutCron, name='signOutCron'),
     path('studentData/getStudentstates',
          apis.getStudentStates, name='getStudentStates'),
     path('studentData/getClassStudents',

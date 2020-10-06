@@ -317,6 +317,40 @@ define({ "api": [
     ]
   },
   {
+    "type": "get",
+    "url": "/specificApis/studentData/signOutCron",
+    "title": "signOutCron",
+    "version": "1.0.0",
+    "description": "<p>signOutCron</p>",
+    "name": "signOutCron",
+    "group": "signOutCron",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "signOutCron",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/studentData/signOutCron"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/specificApis/studentData/askLeave",
     "title": "askLeave",
