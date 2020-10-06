@@ -66,8 +66,8 @@ var details = function(students) {
         text += '<td>' + students[i].name + '</td>\n';
         text += '<td class="sT">' + st + '</td>\n';
         text += '<td class="eT">' + et + '</td>\n';
-        text += '<td><button type="button" class="btn ' + btn1_color + btn1_name + '"' + btn1_dis + '>' + btn1_text + '</button></td>\n';
-        text += '<td>' + points + '</td>\n</tr>\n';
+        text += '<td>' + points + '</td>\n';
+        text += '<td><button type="button" class="btn ' + btn1_color + btn1_name + '"' + btn1_dis + '>' + btn1_text + '</button></td>\n</tr>\n';
         // text += '<td><button type="button" class="btn ' + btn2_color + ' btn-askLeave"' + btn2_dis + '>请假</button></td>\n</tr>\n';
         html += text;
     }
