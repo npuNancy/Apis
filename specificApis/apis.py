@@ -676,7 +676,8 @@ def getStudentStates(request):
                             '%Y-%m-%d %H:%M:%S')
                         et = flag_notStart.values()[0]['endTime'].strftime(
                             '%Y-%m-%d %H:%M:%S')
-                        return retJson(error=0, state=3, starttime=st, endtime=et)
+                        points = flag_notStart.values()[0]['points']
+                        return retJson(error=0, state=3, starttime=st, endtime=et, points=points)
                 else:
                     st = flag_notOver.values()[0]['startTime'].strftime(
                         '%Y-%m-%d %H:%M:%S')

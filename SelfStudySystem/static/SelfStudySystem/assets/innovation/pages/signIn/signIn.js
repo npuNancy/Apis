@@ -9,7 +9,7 @@ $(document).ready(function() {
                 details(stu)
                 signOut();
                 signIn();
-                askLeave();
+                // askLeave();
             } else {
                 console.log(data.reason);
             }
@@ -34,6 +34,7 @@ var details = function(students) {
         let btn1_text = '开始';
         let btn1_dis = '';
         let btn2_dis = '';
+        let points = '';
         // 空格
         if (ret.state == 0) {
             btn1_color = 'btn-success ';
@@ -58,6 +59,7 @@ var details = function(students) {
             et = new Date(ret.endtime + ' GMT+00:00');
             st = st.format("yyyy-MM-dd hh:mm:ss");
             et = et.format("yyyy-MM-dd hh:mm:ss");
+            points = String(ret.points);
         }
         let text = '<tr data-state=' + state + ' data-studentId=' + studentId + ' data-dataid=' + dataId + '>\n';
         text += '<th scope="row">' + studentId + '</th>\n';
@@ -65,7 +67,8 @@ var details = function(students) {
         text += '<td class="sT">' + st + '</td>\n';
         text += '<td class="eT">' + et + '</td>\n';
         text += '<td><button type="button" class="btn ' + btn1_color + btn1_name + '"' + btn1_dis + '>' + btn1_text + '</button></td>\n';
-        text += '<td><button type="button" class="btn ' + btn2_color + ' btn-askLeave"' + btn2_dis + '>请假</button></td>\n</tr>\n';
+        text += '<td>' + points + '</td>\n</tr>\n';
+        // text += '<td><button type="button" class="btn ' + btn2_color + ' btn-askLeave"' + btn2_dis + '>请假</button></td>\n</tr>\n';
         html += text;
     }
     tbody.append(html)

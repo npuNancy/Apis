@@ -20,7 +20,7 @@ class MyEncoder(json.JSONEncoder):
 
 
 class config():
-    startTime = '08:30:00'
+    startTime = '18:30:00'
     endTime = '22:30:00'
     atMostTime = 3.0  # hours
     pointsPerHour = 1.0  # 1.0 point per hour
