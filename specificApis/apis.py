@@ -736,7 +736,7 @@ def signOutCron(request):
     @apiVersion 1.0.0
     @apiDescription signOutCron
     @apiName signOutCron
-    @apiGroup signOutCron
+    @apiGroup studentData
     @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
         {
