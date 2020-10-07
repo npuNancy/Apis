@@ -8,4 +8,4 @@ result = json.dumps(r.json())
 
 now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 with open('./cron.log', 'a', encoding='utf-8') as f:
-    f.write(now + '\n' + requests + '\n')
+    f.write(now + '\n' + result + '\n')
