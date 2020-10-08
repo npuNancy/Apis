@@ -22,6 +22,9 @@ var details = function(classInfo) {
     var html = '';
     for (i in classInfo) {
         let classNumber = classInfo[i].classNumber;
+        if (classNumber == 'lyj2019') {
+            continue;
+        }
         let averTime = (classInfo[i].averDurations / 3600).toFixed(2);
         let reqPeople = classInfo[i].requiredPeople;
         let allPeople = classInfo[i].number;
