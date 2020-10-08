@@ -31,7 +31,7 @@ var details = function(students) {
         let averTime = (students[i].averTime / 3600).toFixed(2);
         let state = students[i].state != 0 ? '是' : '否';
         var color = students[i].state != 0 ? '' :
-            (l.indexOf(stuId) > -1) ? 'm--font-warning' : '';
+            (l.indexOf(stuId) > -1) ? '' : 'm--font-warning';
         html += '<tr class="' + color + '">\n';
         html += '<th scope="row"><a target="_blank" href="student?studentId=' + stuId + '">' + stuId + '</a></th>\n';
         html += '<td>' + name + '</td>\n';
@@ -49,7 +49,7 @@ var details = function(students) {
 var last_students_list = function(students) {
     var stu_sortBy_points = JSON.parse(JSON.stringify(students));
     stu_sortBy_points = sort(stu_sortBy_points, 'points');
-    var l = stu_sortBy_points.slice((stu_sortBy_points.length * 0.8).toFixed(0));
+    var l = stu_sortBy_points.slice((stu_sortBy_points.length * 0.2).toFixed(0));
     return l.map(i => {
         return i.studentId
     });
