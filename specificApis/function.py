@@ -109,7 +109,7 @@ def getClassData(classNumber):
         stuId = stud['studentId']
         stuInfo = getStudentData(stuId)[0]
         if stud['state'] == 0:  # 除去免自习的人
-            points += stuInfo['points']
+            points = stuInfo['points']
             durations += stuInfo['averTime']
             requiredPeople += 1 if points >= requiredPoints else 0
         stuDatas.append(stuInfo)
@@ -117,7 +117,6 @@ def getClassData(classNumber):
     classs = {
         'classNumber': classNumber,
         'number': len(students),  # 人数
-        'points': points,
         'requiredPeople': requiredPeople,
         'averDurations': durations / len(students) if len(students) else 0
     }
