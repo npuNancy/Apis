@@ -85,7 +85,7 @@ def getStudentData(studentId):
 
     durations = 0  # 总时长s
     for data in stuDatas:
-        points += int(data['points'])
+        points += float(data['points'])
         durations += int(data['duration'])
     student['number'] = len(stuDatas)  # 总次数
     student['durations'] = durations
