@@ -79,7 +79,7 @@ def check_UserPass(username, password):
 
 def getStudentData(studentId):
     student = models.Student.objects.filter(studentId=studentId).values()[0]
-    points = student['initPoints']  # 总积分
+    points = float(student['initPoints'])  # 总积分
     stuDatas = models.StudentData.objects.filter(
         studentId__studentId=studentId).values()
 
