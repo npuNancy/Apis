@@ -42,6 +42,7 @@ var details = function(stuDatas) {
         html += '<tr>\n<th scope="row">' + s + '</th>\n';
         html += '<td>' + st + '</td>\n';
         html += '<td>' + et + '</td>\n';
+        html += '<td>' + et + '</td>\n';
         html += '<td>' + point + '</td>\n</tr>\n';
     }
     $("#tbody").append(html);
