@@ -35,8 +35,13 @@ def test(request):
         }
     """
     try:
-        ret = function.cron_signOut()
-        return retJson(error=0, result=ret)
+        datas = StudentData.objects.filter()
+        for data in datas:
+            startTime = data.values()[0]['startTime']
+            endTime = data.values()[0]['endTime']
+            duration, points = calDurationTime(startTime, endTime)
+            data.update(duration=duration, points=points)
+        return retJson(error=0, result='success')
     except Exception as e:
         return retJson(error=2, reason=str(e))
 

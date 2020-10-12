@@ -63,11 +63,9 @@ def calDurationTime(startTime, endTime):
         d = 0
 
     duration = (endTime - startTime).seconds - d
-    mostSeconds = confi.atMostTime * 60 * 60
-    if duration > mostSeconds:
-        duration = mostSeconds
+
     points = (duration / 3600) * confi.pointsPerHour
-    points = round(points, 1)
+    points = round(points, 2)
     return duration, points
 
 
@@ -132,9 +130,9 @@ def cron_signOut():
             data = models.StudentData.objects.get(id=id)
             data.state = 3
             data.save()
-            data = models.StudentData.objects.filter(id=id).values()[0]
-            startTime = data['startTime']
-            endTime = data['endTime']
+            data = models.StudentData.objects.filter(id=id)
+            startTime = data.values()[0]['startTime']
+            endTime = data.values()[0]['endTime']
             duration, points = calDurationTime(startTime, endTime)
             data.update(duration=duration, points=points)
         return 'success'
