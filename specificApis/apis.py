@@ -35,7 +35,7 @@ def test(request):
         }
     """
     try:
-        datas = StudentData.objects.filter(state=2).values()
+        datas = StudentData.objects.filter().values()
         dataIds = [datas[i]['id'] for i in range(len(datas))]
         ret = []
         s = []
@@ -43,12 +43,12 @@ def test(request):
             data = StudentData.objects.filter(id=id)
             startTime = data.values()[0]['startTime']
             endTime = data.values()[0]['endTime']
-            duration, points = calDurationTime(startTime, endTime)
+            duration, points = function.calDurationTime(startTime, endTime)
             ret.append(data.values()[0])
             data.update(duration=duration, points=points)
             s.append({'id': id, 'po': points})
             ret.append(data.values()[0])
-        return retJson(error=0, result='success', ret=ret, s=s)
+        return retJson(error=0, result='success', ret=ret, s=s, mycls=function.MyEncoder)
     except Exception as e:
         return retJson(error=2, reason=str(e))
 
