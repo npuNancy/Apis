@@ -124,13 +124,13 @@ def getClassData(classNumber):
 
 def cron_signOut():
     try:
-        datas = StudentData.objects.filter(state=2).values()
+        datas = models.StudentData.objects.filter(state=2).values()
         dataIds = [datas[i]['id'] for i in range(len(datas))]
         for id in dataIds:
-            data = StudentData.objects.get(id=id)
+            data = models.StudentData.objects.get(id=id)
             data.state = 3
             data.save()
-            data = StudentData.objects.filter(id=id)
+            data = models.StudentData.objects.filter(id=id)
             startTime = data.values()[0]['startTime']
             endTime = data.values()[0]['endTime']
             duration, points = calDurationTime(startTime, endTime)

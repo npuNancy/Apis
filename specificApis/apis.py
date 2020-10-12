@@ -35,10 +35,10 @@ def test(request):
         }
     """
     try:
-        datas = models.StudentData.objects.filter(state=2).values()
+        datas = StudentData.objects.filter(state=2).values()
         dataIds = [datas[i]['id'] for i in range(len(datas))]
         for id in dataIds:
-            data = models.StudentData.objects.filter(id=id)
+            data = StudentData.objects.filter(id=id)
             startTime = data.values()[0]['startTime']
             endTime = data.values()[0]['endTime']
             duration, points = calDurationTime(startTime, endTime)
