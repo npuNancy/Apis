@@ -29,20 +29,23 @@ var details = function(stuDatas) {
         let state = stuDatas[i].state;
         let st = new Date(stuDatas[i].startTime + ' GMT+00:00');
         let et = new Date(stuDatas[i].endTime + ' GMT+00:00');
+        let duration = stuDatas[i].duration;
         let point = stuDatas[i].points;
         st = st.format("yyyy-MM-dd hh:mm:ss");
         et = et.format("yyyy-MM-dd hh:mm:ss");
         if (state == 1) {
             var s = '请假';
-        } else if (state == 3) {
-            var s = '正常';
         } else if (state == 2) {
             continue;
+        } else if (state == 3) {
+            var s = '正常';
+        } else if (state == 4) {
+            var s = '未签退';
         }
         html += '<tr>\n<th scope="row">' + s + '</th>\n';
         html += '<td>' + st + '</td>\n';
         html += '<td>' + et + '</td>\n';
-        html += '<td>' + et + '</td>\n';
+        // html += '<td>' + duration + '</td>\n';
         html += '<td>' + point + '</td>\n</tr>\n';
     }
     $("#tbody").append(html);

@@ -2,7 +2,7 @@ from django.urls import path, include
 from specificApis import apis
 
 urlpatterns = [
-    path('test', apis.test, name='test'),
+    #path('test', apis.test, name='test'),
     path('user/add', apis.userAdd, name='userAdd'),
     path('user/changePass', apis.userChangePass, name='userChangePass'),
     path('user/getUsername', apis.getUsername, name='getUsername'),

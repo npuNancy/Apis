@@ -106,7 +106,7 @@ def getClassData(classNumber):
     for stud in students:
         stuId = stud['studentId']
         stuInfo = getStudentData(stuId)[0]
-        if stud['state'] == 0:  # 除去免自习的人
+        if stud['state'] == 0:  # 非免自习的人
             points = stuInfo['points']
             durations += stuInfo['averTime']
             requiredPeople += 1 if points >= requiredPoints else 0
@@ -128,13 +128,13 @@ def cron_signOut():
         dataIds = [datas[i]['id'] for i in range(len(datas))]
         for id in dataIds:
             data = models.StudentData.objects.get(id=id)
-            data.state = 3
+            data.state = 4
             data.save()
             data = models.StudentData.objects.filter(id=id)
             startTime = data.values()[0]['startTime']
             endTime = data.values()[0]['endTime']
             duration, points = calDurationTime(startTime, endTime)
-            data.update(duration=duration, points=points)
+            data.update(duration=duration, points=0)  # 强制结束积分为0
         return 'success'
     except Exception as e:
         return str(e)
