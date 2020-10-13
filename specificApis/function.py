@@ -131,10 +131,7 @@ def cron_signOut():
             data.state = 4
             data.save()
             data = models.StudentData.objects.filter(id=id)
-            startTime = data.values()[0]['startTime']
-            endTime = data.values()[0]['endTime']
-            duration, points = calDurationTime(startTime, endTime)
-            data.update(duration=duration, points=0)  # 强制结束积分为0
+            data.update(duration=0, points=0)  # 强制结束积分为0
         return 'success'
     except Exception as e:
         return str(e)
