@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var classId = $('.classId').text().replace('班号：', '');
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:80/api/specificApis/show/getClassData",
+        url: "http://121.196.42.250/api/specificApis/show/getClassData",
         type: "POST",
         data: {
             'classNumber': classId
