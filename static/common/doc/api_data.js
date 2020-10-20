@@ -101,6 +101,40 @@ define({ "api": [
     ]
   },
   {
+    "type": "get",
+    "url": "/specificApis/export",
+    "title": "export",
+    "version": "1.0.0",
+    "description": "<p>export student info</p>",
+    "name": "export",
+    "group": "export",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get all class info success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/apis.py",
+    "groupTitle": "export",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/export"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/specificApis/login/login",
     "title": "login",

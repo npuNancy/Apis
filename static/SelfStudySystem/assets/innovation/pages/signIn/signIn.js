@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://121.196.42.250/api/specificApis/studentData/getClassStudents",
+        url: "http://127.0.0.1:80/api/specificApis/studentData/getClassStudents",
         type: "GET",
         success: function(data) {
             if (!data.error) {
@@ -77,7 +77,7 @@ var details = function(students) {
 var getState = function(studentId) {
     var ret;
     $(document).ajaxSubmit({
-        url: "http://121.196.42.250/api/specificApis/studentData/getStudentstates",
+        url: "http://127.0.0.1:80/api/specificApis/studentData/getStudentstates",
         type: "POST",
         async: false,
         data: {
@@ -99,7 +99,7 @@ var askLeave = function() {
         var tr = $(this).parents('tr');
         var studentId = tr.attr('data-studentId');
         $(this).ajaxSubmit({
-            url: "http://121.196.42.250/api/specificApis/studentData/askLeave",
+            url: "http://127.0.0.1:80/api/specificApis/studentData/askLeave",
             type: "POST",
             data: {
                 "studentId": studentId
@@ -126,7 +126,7 @@ var signIn = function() {
         var tr = $(this).parents('tr');
         var studentId = tr.attr('data-studentId');
         $(this).ajaxSubmit({
-            url: "http://121.196.42.250/api/specificApis/studentData/signIn",
+            url: "http://127.0.0.1:80/api/specificApis/studentData/signIn",
             type: "POST",
             data: {
                 "studentId": studentId
@@ -163,7 +163,7 @@ var signOut = function() {
         var studentId = tr.attr('data-studentId');
         var dataId = tr.attr('data-dataid');
         $(this).ajaxSubmit({
-            url: "http://121.196.42.250/api/specificApis/studentData/signOut",
+            url: "http://127.0.0.1:80/api/specificApis/studentData/signOut",
             type: "POST",
             data: {
                 "studentId": studentId,

@@ -28,4 +28,6 @@ urlpatterns = [
     path('show/getAllClass', apis.getAllClass, name='getAllClass'),
     path('show/getClassData', apis.getClassData, name='getClassData'),
     path('show/getStudentData', apis.getStudentData, name='getStudentData'),
+
+    path('export', apis.export, name='export'),
 ]

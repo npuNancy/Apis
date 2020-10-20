@@ -1,13 +1,13 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://121.196.42.250/api/specificApis/show/getAllClass",
+        url: "http://127.0.0.1:80/api/specificApis/show/getAllClass",
         type: "GET",
         success: function(data) {
             if (!data.error) {
                 var people = data.result.people;
                 var required = data.result.requiredPeople;
                 var classInfo = data.classInfo;
-                $('.m-portlet__head-text').text('达标人数/总人数：' + required + '/' + people)
+                $('.head-text').text('达标人数/总人数：' + required + '/' + people)
                 details(classInfo);
             } else {
                 console.log(data.reason);
@@ -36,3 +36,10 @@ var details = function(classInfo) {
     }
     tbody.append(html);
 };
+
+$(".export").click(function() {
+    var $form = $('<form method="GET"></form>');
+    $form.attr('action', '/api/specificApis/export');
+    $form.appendTo($('body'));
+    $form.submit();
+});
