@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime, date, timedelta
 from django.shortcuts import render
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse, FileResponse, StreamingHttpResponse
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from specificApis.models import *
 from specificApis import function
@@ -920,7 +920,7 @@ def export(request):
     if request.method == "GET":
         try:
             now = datetime.now().strftime('%Y_%m_%d')
-            filename = '学生信息_' + now + '.xlsx'
+            filename = 'student_info_' + now + '.xlsx'
             base_dir = os.path.dirname(
                 os.path.dirname(os.path.abspath(__file__)))
             file_path = os.path.join(
