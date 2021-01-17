@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% load static %} {% block title %}班级管理{% endblock title %} {% block m-content %}
+<!--start::Portlet-->
+<div class="m-portlet">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text head-text classId">
+                            班号：
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="m-portlet__head-title">
+                        <a href="studentAdd" class="export">
+                            <i class="m-menu__link-icon flaticon-user-add"></i>
+                            <span class="m-menu__link-text">
+                            添加学生
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-2">
+                    <div class="m-portlet__head-title">
+                        <a href="#" class="export">
+                            <i class="m-menu__link-icon flaticon-download"></i>
+                            <span class="m-menu__link-text">
+                            数据导入
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <!--begin::Section-->
+        <div class="m-section">
+            <div class="m-section__content">
+                <div class="table-responsive">
+                    <table class="table table-striped m-table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>编辑信息</th>
+                                <th>删除</th>
+                            </tr>
+                        </thead>
+                        <tbody id='tbody'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--end::Section-->
+    </div>
+    <!--end::Form-->
+</div>
+<!--end::Portlet-->
+{% endblock m-content %}
+
+
+<!--start::ext js  -->
+{% block ext_js %}
+<script src="{% static 'SelfStudySystem/assets/innovation/pages/manageClass/manageClass.js' %}"></script>
+{% endblock ext_js %}
+<!--end::ext js  -->

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://121.196.42.250/api/specificApis/show/getAllClass",
+        url: "http://127.0.0.1:8000/api/specificApis/show/getAllClass",
         type: "GET",
         success: function(data) {
             if (!data.error) {

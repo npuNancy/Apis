@@ -1,33 +1,37 @@
 from django.urls import path, include
-from specificApis import apis
+# from specificApis import apis
+from specificApis.api import ImportExport, show, studentData, student, user
+
 
 urlpatterns = [
     #path('test', apis.test, name='test'),
-    path('user/add', apis.userAdd, name='userAdd'),
-    path('user/changePass', apis.userChangePass, name='userChangePass'),
-    path('user/getUsername', apis.getUsername, name='getUsername'),
-    path('user/checkPass', apis.checkPass, name='checkPass'),
+    path('user/add', user.userAdd, name='userAdd'),
+    path('user/changePass', user.userChangePass, name='userChangePass'),
+    path('user/getUsername', user.getUsername, name='getUsername'),
+    path('user/checkPass', user.checkPass, name='checkPass'),
+    path('user/getUserClassNumber',
+         user.getUserClassNumber, name='getUserClassNumber'),
 
-    path('login/login', apis.login, name='login'),
-    path('login/logout', apis.logout, name='logout'),
+    path('login/login', user.login, name='login'),
+    path('login/logout', user.logout, name='logout'),
 
-    path('student/add', apis.studentAdd, name='studentAdd'),
-    path('student/get', apis.studentGet, name='studentGet'),
-    path('student/change', apis.studentChange, name='studentChange'),
-    path('student/delete', apis.studentDelete, name='studentDelete'),
+    path('student/add', student.studentAdd, name='studentAdd'),
+    path('student/get', student.studentGet, name='studentGet'),
+    path('student/change', student.studentChange, name='studentChange'),
+    path('student/delete', student.studentDelete, name='studentDelete'),
 
-    path('studentData/signIn', apis.signIn, name='signIn'),
-    path('studentData/signOut', apis.signOut, name='signOut'),
-    path('studentData/askLeave', apis.askLeave, name='askLeave'),
-    path('studentData/signOutCron', apis.signOutCron, name='signOutCron'),
+    path('studentData/signIn', studentData.signIn, name='signIn'),
+    path('studentData/signOut', studentData.signOut, name='signOut'),
+    path('studentData/askLeave', studentData.askLeave, name='askLeave'),
+    path('studentData/signOutCron', studentData.signOutCron, name='signOutCron'),
     path('studentData/getStudentstates',
-         apis.getStudentStates, name='getStudentStates'),
+         studentData.getStudentStates, name='getStudentStates'),
     path('studentData/getClassStudents',
-         apis.getClassStudents, name='getClassStudents'),
+         studentData.getClassStudents, name='getClassStudents'),
 
-    path('show/getAllClass', apis.getAllClass, name='getAllClass'),
-    path('show/getClassData', apis.getClassData, name='getClassData'),
-    path('show/getStudentData', apis.getStudentData, name='getStudentData'),
+    path('show/getAllClass', show.getAllClass, name='getAllClass'),
+    path('show/getClassData', show.getClassData, name='getClassData'),
+    path('show/getStudentData', show.getStudentData, name='getStudentData'),
 
-    path('export', apis.export, name='export'),
+    path('export', ImportExport.export, name='export'),
 ]

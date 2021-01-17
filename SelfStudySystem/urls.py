@@ -9,4 +9,7 @@ urlpatterns = [
     path('changePass', views.changePass, name='changePass'),
     path('class', views.classes, name='classes'),
     path('student', views.student, name='student'),
+    path('manageClass', views.manageClass, name='manageClass'),
+    path('studentEdit', views.studentEdit, name='studentEdit'),
+    path('studentAdd', views.studentAdd, name='studentAdd'),
 ]

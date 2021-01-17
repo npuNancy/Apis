@@ -1,7 +1,7 @@
 import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from specificApis import models, apis, function
+from specificApis import models, function
 # Create your views here.
 
 
@@ -23,6 +23,26 @@ def signIn(request):
     if not function.check_Session(request):
         return login(request)
     return render(request, 'signIn.html')
+
+
+def manageClass(request):
+    if not function.check_Session(request):
+        return login(request)
+    return render(request, 'manageClass.html')
+
+
+def studentEdit(request):
+    if not function.check_Session(request):
+        return login(request)
+    if 'studentId' in request.GET:
+        studentId = request.GET['studentId']
+    return render(request, 'studentEdit.html', {'studentId': studentId})
+
+
+def studentAdd(request):
+    if not function.check_Session(request):
+        return login(request)
+    return render(request, 'studentAdd.html')
 
 
 def classes(request):

@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block title %}编辑学生信息{% endblock title %} {% block m-content %}
+<div class="m-portlet m-portlet--tab">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <span class="m-portlet__head-icon m--hide">
+                    <i class="la la-gear"></i>
+                </span>
+                <h3 class="m-portlet__head-text" id="studentId">
+                    编辑学生信息 学号：{{studentId}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!--begin::Form-->
+    <form class="m-form m-form--fit m-form--label-align-right">
+        <div class="m-portlet__body">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="form-group m-form__group">
+                        <label>
+                            姓名
+                        </label>
+                        <input class="form-control m-input m-input--air" id="name">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            性别
+                        </label>
+                        <input class="form-control m-input m-input--air" id='sex'>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label>
+                            初始积分
+                        </label>
+                        <input class="form-control m-input m-input--air" id='initPoints'>
+                    </div>
+                    <!-- <div class="form-group m-form__group">
+                        <label class="col-form-label ">
+                            是否免修
+                        </label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <div class="bootstrap-switch-off bootstrap-switch-id-m_switch_1 bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 110px;">
+                                <div class="bootstrap-switch-container" style="width: 161.6px; margin-left: -53.6px;">
+                                    <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width: 54px;">ON</span>
+                                    <span class="bootstrap-switch-label" style="width: 54.4px;">&nbsp;</span>
+                                    <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 54px;">OFF</span>
+                                    <input data-switch="true" type="checkbox" id="m_switch_1">
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet__foot m-portlet__foot--fit">
+            <div class="m-form__actions">
+                <button type="reset" class="btn btn-accent">
+                    提交
+                </button>
+            </div>
+        </div>
+    </form>
+    <!--end::Form-->
+</div>
+{% endblock m-content %}
+
+<!--start::ext js  -->
+{% block ext_js %}
+<script src="{% static 'SelfStudySystem/assets/demo/default/custom/crud/forms/widgets/bootstrap-switch.js' %}"></script>
+<script src="{% static 'SelfStudySystem/assets/innovation/pages/student/studentEdit.js' %}"></script> {% endblock ext_js %}
+<!--end::ext js  -->

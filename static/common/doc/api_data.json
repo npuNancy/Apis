@@ -126,99 +126,11 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/ImportExport.py",
     "groupTitle": "export",
     "sampleRequest": [
       {
         "url": "http://API-URL/api/specificApis/export"
-      }
-    ]
-  },
-  {
-    "type": "post",
-    "url": "/specificApis/login/login",
-    "title": "login",
-    "version": "1.0.0",
-    "description": "<p>login</p>",
-    "name": "login",
-    "group": "login",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "username",
-            "description": "<p>username unique</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "password",
-            "description": "<p>password</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"login\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "./specificApis/apis.py",
-    "groupTitle": "login",
-    "sampleRequest": [
-      {
-        "url": "http://API-URL/api/specificApis/login/login"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/specificApis/login/logout",
-    "title": "logout",
-    "version": "1.0.0",
-    "description": "<p>logout</p>",
-    "name": "logout",
-    "group": "login",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"logout\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "./specificApis/apis.py",
-    "groupTitle": "login",
-    "sampleRequest": [
-      {
-        "url": "http://API-URL/api/specificApis/login/logout"
       }
     ]
   },
@@ -248,7 +160,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/show.py",
     "groupTitle": "show",
     "sampleRequest": [
       {
@@ -295,7 +207,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/show.py",
     "groupTitle": "show",
     "sampleRequest": [
       {
@@ -342,7 +254,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/show.py",
     "groupTitle": "show",
     "sampleRequest": [
       {
@@ -389,7 +301,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/studentData.py",
     "groupTitle": "studentData",
     "sampleRequest": [
       {
@@ -423,7 +335,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/studentData.py",
     "groupTitle": "studentData",
     "sampleRequest": [
       {
@@ -470,7 +382,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/studentData.py",
     "groupTitle": "studentData",
     "sampleRequest": [
       {
@@ -517,7 +429,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/studentData.py",
     "groupTitle": "studentData",
     "sampleRequest": [
       {
@@ -571,7 +483,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/studentData.py",
     "groupTitle": "studentData",
     "sampleRequest": [
       {
@@ -605,7 +517,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/studentData.py",
     "groupTitle": "studentData",
     "sampleRequest": [
       {
@@ -687,7 +599,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/student.py",
     "groupTitle": "student",
     "sampleRequest": [
       {
@@ -755,7 +667,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/student.py",
     "groupTitle": "student",
     "sampleRequest": [
       {
@@ -802,7 +714,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/student.py",
     "groupTitle": "student",
     "sampleRequest": [
       {
@@ -836,45 +748,11 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/student.py",
     "groupTitle": "student",
     "sampleRequest": [
       {
         "url": "http://API-URL/api/specificApis/student/get"
-      }
-    ]
-  },
-  {
-    "type": "get",
-    "url": "/specificApis/test",
-    "title": "test",
-    "version": "1.0.0",
-    "description": "<p>test</p>",
-    "name": "test",
-    "group": "test",
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"create user success\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "./specificApis/apis.py",
-    "groupTitle": "test",
-    "sampleRequest": [
-      {
-        "url": "http://API-URL/api/specificApis/test"
       }
     ]
   },
@@ -917,11 +795,45 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/user.py",
     "groupTitle": "user",
     "sampleRequest": [
       {
         "url": "http://API-URL/api/specificApis/user/checkPass"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/user/getUserClassNumber",
+    "title": "getUserClassNumber",
+    "version": "1.0.0",
+    "description": "<p>getUserClassNumber</p>",
+    "name": "getUserClassNumber",
+    "group": "user",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get UserClassNumber success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/user.py",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/user/getUserClassNumber"
       }
     ]
   },
@@ -951,11 +863,99 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/user.py",
     "groupTitle": "user",
     "sampleRequest": [
       {
         "url": "http://API-URL/api/specificApis/user/getUsername"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/login/login",
+    "title": "login",
+    "version": "1.0.0",
+    "description": "<p>login</p>",
+    "name": "login",
+    "group": "user",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username unique</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"login\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/user.py",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/login/login"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/login/logout",
+    "title": "logout",
+    "version": "1.0.0",
+    "description": "<p>logout</p>",
+    "name": "logout",
+    "group": "user",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"logout\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/user.py",
+    "groupTitle": "user",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/login/logout"
       }
     ]
   },
@@ -1019,7 +1019,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/user.py",
     "groupTitle": "user",
     "sampleRequest": [
       {
@@ -1066,7 +1066,7 @@
         }
       ]
     },
-    "filename": "./specificApis/apis.py",
+    "filename": "./specificApis/api/user.py",
     "groupTitle": "user",
     "sampleRequest": [
       {

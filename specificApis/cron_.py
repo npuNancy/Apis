@@ -3,7 +3,7 @@ import requests
 import datetime
 import json
 
-url = 'http://121.196.42.250/api/specificApis/studentData/signOutCron'
+url = 'http://127.0.0.1:8000/api/specificApis/studentData/signOutCron'
 r = requests.get(url)
 result = json.dumps(r.json())
 
