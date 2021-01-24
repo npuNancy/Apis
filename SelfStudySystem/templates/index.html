@@ -1,5 +1,11 @@
-{% extends 'base.html' %} {% load static %} {% block title %}首页{% endblock title %} {% block m-content %}
+{% extends 'base.html' %} {% load static %}
+<!--start::TITLE-->
+{% block title %} 首页 {% endblock title %}
+<!--end::TITLE-->
+
 <!--start::Portlet-->
+{% block m-content %}
+<!--start::Portlet USER-->
 <div class="m-portlet">
     <div class="m-portlet__head">
         <div class="m-portlet__head-caption">
@@ -49,9 +55,9 @@
     </div>
     <!--end::Form-->
 </div>
-<!--end::Portlet-->
+<!--end::Portlet USER-->
 {% endblock m-content %}
-
+<!--end::Portlet-->
 
 <!--start::ext js  -->
 {% block ext_js %}

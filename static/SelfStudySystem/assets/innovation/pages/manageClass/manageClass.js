@@ -53,7 +53,7 @@ var btn_edit = function() {
         var tr = $(this).parents('tr');
         var studentId = tr.attr('data-studentId');
         // 转到编辑页面
-        window.location.href = 'http://127.0.0.1:8000/studentEdit'
+        window.location.href = 'http://127.0.0.1:8000/studentEdit?studentId=' + studentId;
     });
 };
 
@@ -64,16 +64,18 @@ var btn_delete = function() {
             var tr = $(this).parents('tr');
             var studentId = tr.attr('data-studentId');
             $(this).ajaxSubmit({
-                url: "#",
+                url: "http://127.0.0.1:8000/api/specificApis/student/delete",
                 type: "POST",
                 data: {
                     "studentId": studentId
                 },
                 success: function(data) {
                     if (!data.error) {
-                        console.log("success")
+                        console.log("success");
+                        window.location.href = 'http://127.0.0.1:8000/manageClass'
                     } else {
                         console.log(data.reason);
+                        alert("失败！\n");
                     }
                 }
             });

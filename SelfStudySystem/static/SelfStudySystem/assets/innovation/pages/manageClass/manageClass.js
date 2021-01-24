@@ -75,7 +75,7 @@ var btn_delete = function() {
                         window.location.href = 'http://127.0.0.1:8000/manageClass'
                     } else {
                         console.log(data.reason);
-                        alert("失败！\n原因：" + data.reason);
+                        alert("失败！\n");
                     }
                 }
             });

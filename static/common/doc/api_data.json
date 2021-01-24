@@ -1,6 +1,418 @@
 [
   {
     "type": "post",
+    "url": "/specificApis/admin/add",
+    "title": "adminAdd",
+    "version": "1.0.0",
+    "description": "<p>adminAdd</p>",
+    "name": "adminAdd",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username unique</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"create admin success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/add"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/admin/changePass",
+    "title": "changePass",
+    "version": "1.0.0",
+    "description": "<p>修改密码</p>",
+    "name": "changePass",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"change admin's password success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/changePass"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/admin/checkPass",
+    "title": "checkPass",
+    "version": "1.0.0",
+    "description": "<p>修改密码时检查原密码正确性</p>",
+    "name": "checkPass",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"check password success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/checkPass"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/admin/gradeAdminAdd",
+    "title": "gradeAdminAdd",
+    "version": "1.0.0",
+    "description": "<p>add grade admin</p>",
+    "name": "gradeAdminAdd",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username unique</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "gradeId",
+            "description": "<p>gradeId</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"create admin success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/gradeAdminAdd"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/admin/gradeAdminDelete",
+    "title": "gradeAdminDelete",
+    "version": "1.0.0",
+    "description": "<p>delete gradeAdmin</p>",
+    "name": "gradeAdminDelete",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>grade admin username</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"delete admin success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/gradeAdminDelete"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/admin/gradeAdminGetAll",
+    "title": "gradeAdminGetAll",
+    "version": "1.0.0",
+    "description": "<p>get All gradeAdmin</p>",
+    "name": "gradeAdminGetAll",
+    "group": "admin",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"{\"username\": admin2018, \"grade\": \"2018\"}\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/gradeAdminGetAll"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/admin/gradeAdminLogout",
+    "title": "gradeAdminLogout",
+    "version": "1.0.0",
+    "description": "<p>年级管理员退出登录</p>",
+    "name": "gradeAdminLogout",
+    "group": "admin",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"logout\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/gradeAdminLogout"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/admin/login",
+    "title": "login",
+    "version": "1.0.0",
+    "description": "<p>系统管理员和年级管理员 登录</p>",
+    "name": "login",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username unique</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"grade admin\" or \"admin\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/login"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/admin/logout",
+    "title": "logout",
+    "version": "1.0.0",
+    "description": "<p>系统管理员退出登录</p>",
+    "name": "logout",
+    "group": "admin",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"logout\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/admin/logout"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/common/keyInfo",
     "title": "apiKey info",
     "version": "1.0.0",
@@ -131,6 +543,141 @@
     "sampleRequest": [
       {
         "url": "http://API-URL/api/specificApis/export"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/specificApis/grade/gradeAdd",
+    "title": "gradeAdd",
+    "version": "1.0.0",
+    "description": "<p>add a grade</p>",
+    "name": "gradeAdd",
+    "group": "grade",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "grade",
+            "description": "<p>grade</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "college",
+            "description": "<p>college</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"create grade success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/grade.py",
+    "groupTitle": "grade",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/grade/gradeAdd"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/specificApis/grade/gradeDelete",
+    "title": "gradeDelete",
+    "version": "1.0.0",
+    "description": "<p>delete a grade</p>",
+    "name": "gradeDelete",
+    "group": "grade",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "gradeId",
+            "description": "<p>gradeId</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"delete grade success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/grade.py",
+    "groupTitle": "grade",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/grade/gradeDelete"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/grade/gradeGetAll",
+    "title": "gradeGetAll",
+    "version": "1.0.0",
+    "description": "<p>get All grade</p>",
+    "name": "gradeGetAll",
+    "group": "grade",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"{\"grade\": admin2018, \"college\": \"2018\"}\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/grade.py",
+    "groupTitle": "grade",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/grade/gradeGetAll"
       }
     ]
   },

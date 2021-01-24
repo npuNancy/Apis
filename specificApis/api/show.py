@@ -8,10 +8,6 @@ from specificApis.models import *
 from specificApis import function
 
 
-def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):
-    return HttpResponse(json.dumps(kwargs if obj is None else obj, cls=mycls), content_type='application/json')
-
-
 @csrf_exempt
 def getStudentData(request):
     """
@@ -35,16 +31,16 @@ def getStudentData(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         try:
             studentId = request.POST.get('studentId')
             student, stuDatas = function.getStudentData(studentId)
-            return retJson(error=0, student=student, data=list(stuDatas), mycls=function.MyEncoder)
+            return function.retJson(error=0, student=student, data=list(stuDatas), mycls=function.MyEncoder)
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -70,17 +66,17 @@ def getClassData(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         try:
             classNumber = request.POST.get('classNumber')
             classs, students = function.getClassData(classNumber)
 
-            return retJson(error=0, classs=classs, data=list(students), mycls=function.MyEncoder)
+            return function.retJson(error=0, classs=classs, data=list(students), mycls=function.MyEncoder)
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: get')
+        return function.retJson(error=1, reason='needmethod: get')
 
 
 @csrf_exempt
@@ -120,8 +116,8 @@ def getAllClass(request):
                 'people': people,
                 'requiredPeople': requiredPeople
             }
-            return retJson(error=0, result=result, classInfo=classInfo, mycls=function.MyEncoder)
+            return function.retJson(error=0, result=result, classInfo=classInfo, mycls=function.MyEncoder)
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: get')
+        return function.retJson(error=1, reason='needmethod: get')

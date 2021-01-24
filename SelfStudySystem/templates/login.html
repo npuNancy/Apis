@@ -41,7 +41,11 @@
                             </div>
                             <div class="m-login__form-action">
                                 <button id="m_login_signin_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-                                    登录
+                                    {% if type == "user" %}
+                                    用户登录
+                                    {% else %}
+                                    管理员登录
+                                    {% endif %}
                                 </button>
                             </div>
                         </form>
@@ -56,7 +60,11 @@
     <script src="{% static 'SelfStudySystem/assets/demo/default/base/scripts.bundle.js' %}"></script>
     <!--end::Base Scripts -->
     <!--begin::Page Snippets -->
+    {% if type == "user" %}
     <script src="{% static 'SelfStudySystem/assets/innovation/pages/login/login.js' %}"></script>
+    {% else %}
+    <script src="{% static 'SelfStudySystem/assets/innovation/pages/login/adminLogin.js' %}"></script>
+    {% endif %}
     <!--end::Page Snippets -->
 </body>
 <!-- end::Body -->

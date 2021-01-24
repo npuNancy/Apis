@@ -7,9 +7,7 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from specificApis.models import *
 from specificApis import function
 
-
-def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):
-    return HttpResponse(json.dumps(kwargs if obj is None else obj, cls=mycls), content_type='application/json')
+import json
 
 
 @csrf_exempt

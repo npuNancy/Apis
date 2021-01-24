@@ -3,6 +3,18 @@ from django.db import models
 # Create your models here.
 
 
+class Administrator(models.Model):
+    username = models.CharField(max_length=20, db_index=True, unique=True)
+    password = models.CharField(max_length=100, blank=False)
+
+
+class GradeAdmin(models.Model):
+    username = models.CharField(max_length=20, db_index=True, unique=True)
+    password = models.CharField(max_length=100, blank=False)
+    grade = models.ForeignKey(
+        'Grade', to_field='grade', on_delete=models.PROTECT, null=True)
+
+
 class Grade(models.Model):
     grade = models.CharField(max_length=20, db_index=True, unique=True)
     college = models.CharField(max_length=20, db_index=True)
@@ -17,7 +29,7 @@ class Classes(models.Model):
 
 class User(models.Model):
     username = models.CharField(max_length=20, db_index=True, unique=True)
-    password = models.CharField(max_length=100)
+    password = models.CharField(max_length=100, blank=False)
     classNumber = models.CharField(max_length=20, db_index=True, unique=True)
 
 

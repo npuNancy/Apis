@@ -31,7 +31,8 @@ var details = function(classInfo) {
         let text = '<tr>\n<th scope="row"><a target="_blank" href="class?classNumber=' + classNumber + '">' + classNumber + '</a></th>\n';
         text += '<td>' + averTime + '</td>\n';
         text += '<td>' + reqPeople + '</td>\n';
-        text += '<td>' + allPeople + '</td>\n</tr>\n';
+        // text += '<td>' + allPeople + '</td>\n</tr>\n';
+        text += '<td><button type="button" class="btn ' + btn2_color + ' btn-askLeave"' + btn2_dis + '>请假</button></td>\n</tr>\n';
         html += text;
     }
     tbody.append(html);

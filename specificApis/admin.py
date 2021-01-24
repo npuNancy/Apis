@@ -16,3 +16,5 @@ class StudentAdmin(admin.ModelAdmin):
 admin.site.register(models.StudentData)
 admin.site.register(models.Classes)
 admin.site.register(models.Grade)
+admin.site.register(models.Administrator)
+admin.site.register(models.GradeAdmin)

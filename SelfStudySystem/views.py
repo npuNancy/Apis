@@ -6,11 +6,11 @@ from specificApis import models, function
 
 
 def login(request):
-    return render(request, 'login.html')
+    return render(request, 'login.html', {"type": "user"})
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {"type": "user"})
 
 
 def changePass(request):
@@ -63,3 +63,19 @@ def student(request):
         return render(request, 'student.html', {'studentId': studentId})
     else:
         return index(request)
+
+
+def adminLogin(request):
+    return render(request, 'login.html', {"type": "admin"})
+
+
+def adminIndex(request):
+    if not function.check_adminSession(request):
+        return adminLogin(request)
+    return render(request, 'adminIndex.html', {"type": "admin"})
+
+
+def gradeAdminIndex(request):
+    if not function.check_gradeAdminSession(request):
+        return adminLogin(request)
+    return render(request, 'gradeAdminIndex.html')

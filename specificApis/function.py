@@ -54,8 +54,23 @@ def check_Session(request):
     return True if username else False
 
 
+def check_adminSession(request):
+    username = request.session.get('username_admin')
+    return True if username else False
+
+
+def check_gradeAdminSession(request):
+    username = request.session.get('username_grade')
+    return True if username else False
+
+
 def checkExist_student(studentId):
     flag = models.Student.objects.filter(studentId=studentId)
+    return True if flag else False
+
+
+def checkExist_admin(username):
+    flag = models.Administrator.objects.filter(username=username)
     return True if flag else False
 
 
@@ -79,6 +94,20 @@ def calDurationTime(startTime, endTime):
 def check_UserPass(username, password):
     user_obj = models.User.objects.filter(username=username, password=password)
     ret = True if user_obj else False
+    return ret
+
+
+def check_adminPass(username, password):
+    admin_obj = models.Administrator.objects.filter(
+        username=username, password=password)
+    ret = True if admin_obj else False
+    return ret
+
+
+def check_gradeAdminPass(username, password):
+    admin_obj = models.GradeAdmin.objects.filter(
+        username=username, password=password)
+    ret = True if admin_obj else False
     return ret
 
 

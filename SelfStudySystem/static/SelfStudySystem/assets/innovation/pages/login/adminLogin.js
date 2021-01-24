@@ -44,7 +44,7 @@ var SnippetLogin = function() {
                     l.valid() && (
                         a.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0),
                         l.ajaxSubmit({
-                            url: "http://127.0.0.1:8000/api/specificApis/login/login",
+                            url: "http://127.0.0.1:8000/api/specificApis/admin/login",
                             type: "POST",
                             data: {
                                 'username': $("#username").val(),
@@ -57,8 +57,10 @@ var SnippetLogin = function() {
                                         i(l, "danger", "Incorrect username or password. Please try again.")
                                 } else {
                                     console.log("login success");
-                                    console.log(data.result);
-                                    window.location.href = "http://127.0.0.1:8000/index";
+                                    if (data.types == "admin")
+                                        window.location.href = "http://127.0.0.1:8000/adminIndex";
+                                    else
+                                        window.location.href = "http://127.0.0.1:8000/gradeAdminIndex";
                                 }
                             }
                         }))

@@ -8,10 +8,6 @@ from specificApis.models import *
 from specificApis import function
 
 
-def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):
-    return HttpResponse(json.dumps(kwargs if obj is None else obj, cls=mycls), content_type='application/json')
-
-
 @csrf_exempt
 def export(request):
     """
@@ -49,7 +45,7 @@ def export(request):
                 stuInfo.update(info)
             ret = function.write_excel_xlsx(file_path, students)
             if ret != 'success':
-                return retJson(error=3, reason=ret)
+                return function.retJson(error=3, reason=ret)
 
             # 输出
             file = open(file_path, 'rb')
@@ -59,6 +55,6 @@ def export(request):
                 filename).encode('utf-8')
             return response
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: get')
+        return function.retJson(error=1, reason='needmethod: get')

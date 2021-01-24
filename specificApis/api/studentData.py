@@ -8,10 +8,6 @@ from specificApis.models import *
 from specificApis import function
 
 
-def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):
-    return HttpResponse(json.dumps(kwargs if obj is None else obj, cls=mycls), content_type='application/json')
-
-
 @csrf_exempt
 def signIn(request):
     """
@@ -35,7 +31,7 @@ def signIn(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         # check if the # correct Time
         nowTime = datetime.strptime(
@@ -62,20 +58,20 @@ def signIn(request):
                             obje_Data.save()
                             values = StudentData.objects.filter(
                                 studentId=student_Account, date=dateToday, state=2).values()[0]
-                            return retJson(error=0, result='sign in success', values=values, mycls=function.MyEncoder)
+                            return function.retJson(error=0, result='sign in success', values=values, mycls=function.MyEncoder)
                         except Exception as e:
-                            return retJson(error=6, reason=str(e))
+                            return function.retJson(error=6, reason=str(e))
                     else:
-                        return retJson(error=5, reason='not over yet')
+                        return function.retJson(error=5, reason='not over yet')
                 else:
-                    return retJson(error=4, reason='has asked for leave')
+                    return function.retJson(error=4, reason='has asked for leave')
             else:
-                return retJson(error=3, reason='Students dont exist')
+                return function.retJson(error=3, reason='Students dont exist')
         else:
             # incorrect time
-            return retJson(error=2, reason='incorrect time')
+            return function.retJson(error=2, reason='incorrect time')
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -102,7 +98,7 @@ def signOut(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == 'POST':
         studentId = request.POST.get('studentId')
         dataId = request.POST.get('dataId')
@@ -120,15 +116,15 @@ def signOut(request):
                     points = function.calDurationTime(startTime, endTime)[1]
                     data.update(duration=duration, points=points)
                     values = StudentData.objects.filter(id=dataId).values()[0]
-                    return retJson(error=0, result='sign out success', values=values, mycls=function.MyEncoder)
+                    return function.retJson(error=0, result='sign out success', values=values, mycls=function.MyEncoder)
                 else:
-                    return retJson(error=4, reason='wrong state')
+                    return function.retJson(error=4, reason='wrong state')
             except Exception as e:
-                return retJson(error=3, reason=str(e))
+                return function.retJson(error=3, reason=str(e))
         else:
-            return retJson(error=2, reason='Students dont exist')
+            return function.retJson(error=2, reason='Students dont exist')
     else:
-        return retJson(error=1, reason='needmethod: POST')
+        return function.retJson(error=1, reason='needmethod: POST')
 
 
 @csrf_exempt
@@ -154,7 +150,7 @@ def askLeave(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         studentId = request.POST.get('studentId')
         dateToday = date.today()
@@ -180,20 +176,20 @@ def askLeave(request):
                             obje_Data.save()
                             values = StudentData.objects.filter(
                                 studentId=student_Account, date=dateToday, state=1).values()[0]
-                            return retJson(error=0, values=values, mycls=function.MyEncoder)
+                            return function.retJson(error=0, values=values, mycls=function.MyEncoder)
                         except Exception as e:
-                            return retJson(error=7, reason=str(e))
+                            return function.retJson(error=7, reason=str(e))
                     else:
                         # 开始过
-                        return retJson(error=6, reason='cant ask for leave')
+                        return function.retJson(error=6, reason='cant ask for leave')
                 else:
-                    return retJson(error=5, reason='not over yet')
+                    return function.retJson(error=5, reason='not over yet')
             else:
-                return retJson(error=4, reason='has asked for leave')
+                return function.retJson(error=4, reason='has asked for leave')
         else:
-            return retJson(error=2, reason='Students dont exist')
+            return function.retJson(error=2, reason='Students dont exist')
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -219,7 +215,7 @@ def getStudentStates(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         studentId = request.POST.get('studentId')
         dateToday = date.today()
@@ -238,7 +234,7 @@ def getStudentStates(request):
                         flag_notStart = StudentData.objects.filter(
                             studentId=student_Account, date=dateToday, state=3)
                         if not flag_notStart:
-                            return retJson(error=0, state=0)
+                            return function.retJson(error=0, state=0)
                         else:
                             # 今天开始过
                             st = flag_notStart.values()[0]['startTime'].strftime(
@@ -246,21 +242,21 @@ def getStudentStates(request):
                             et = flag_notStart.values()[0]['endTime'].strftime(
                                 '%Y-%m-%d %H:%M:%S')
                             points = flag_notStart.values()[0]['points']
-                            return retJson(error=0, state=3, starttime=st, endtime=et, points=points,  mycls=function.MyEncoder)
+                            return function.retJson(error=0, state=3, starttime=st, endtime=et, points=points,  mycls=function.MyEncoder)
                     else:
                         st = flag_notOver.values()[0]['startTime'].strftime(
                             '%Y-%m-%d %H:%M:%S')
                         dataId = flag_notOver.values()[0]['id']
                         # 没结束
-                        return retJson(error=0, state=2, starttime=st, dataId=dataId)
+                        return function.retJson(error=0, state=2, starttime=st, dataId=dataId)
                 else:
-                    return retJson(error=0, state=1)  # 请假
+                    return function.retJson(error=0, state=1)  # 请假
             else:
-                return retJson(error=3, reason='Students dont exist')
+                return function.retJson(error=3, reason='Students dont exist')
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -285,7 +281,7 @@ def getClassStudents(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "GET":
         try:
             username = request.session.get('username')
@@ -293,11 +289,11 @@ def getClassStudents(request):
                 0]['classNumber']
             stu = Student.objects.filter(
                 classNumber__classNumber=classNumber).values()
-            return retJson(error=0, result=list(stu), mycls=function.MyEncoder)
+            return function.retJson(error=0, result=list(stu), mycls=function.MyEncoder)
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: get')
+        return function.retJson(error=1, reason='needmethod: get')
 
 
 @csrf_exempt
@@ -323,6 +319,6 @@ def signOutCron(request):
     """
     try:
         ret = function.cron_signOut()
-        return retJson(error=0, result=ret)
+        return function.retJson(error=0, result=ret)
     except Exception as e:
-        return retJson(error=2, reason=str(e))
+        return function.retJson(error=2, reason=str(e))

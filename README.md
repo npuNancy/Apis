@@ -10,4 +10,8 @@
     `python manage.py migrate`
     `python manage.py runserver`
 6. 在浏览器访问 127.0.0.1:8000
-    
+
+TODO:
+    把 gradeAdmin 单独拿出来
+    login页面判断是否已经登录
+    添加年级管理员功能

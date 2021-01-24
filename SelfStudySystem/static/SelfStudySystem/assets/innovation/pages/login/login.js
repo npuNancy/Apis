@@ -57,6 +57,7 @@ var SnippetLogin = function() {
                                         i(l, "danger", "Incorrect username or password. Please try again.")
                                 } else {
                                     console.log("login success");
+                                    console.log(data.result);
                                     window.location.href = "http://127.0.0.1:8000/index";
                                 }
                             }

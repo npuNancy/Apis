@@ -8,10 +8,6 @@ from specificApis.models import *
 from specificApis import function
 
 
-def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):
-    return HttpResponse(json.dumps(kwargs if obj is None else obj, cls=mycls), content_type='application/json')
-
-
 @csrf_exempt
 def studentAdd(request):
     """
@@ -40,7 +36,7 @@ def studentAdd(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         studentId = request.POST.get('studentId')
         name = request.POST.get('name')
@@ -54,11 +50,11 @@ def studentAdd(request):
                                         studentId=studentId, name=name,
                                         state=state, initPoints=initPoints)
             student_Account__.save()
-            return retJson(error=0, result="create student success")
+            return function.retJson(error=0, result="create student success")
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -83,12 +79,12 @@ def studentGet(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "GET":
         value = list(Student.objects.all().values())
-        return retJson(error=0, result=value, mycls=function.MyEncoder)
+        return function.retJson(error=0, result=value, mycls=function.MyEncoder)
     else:
-        return retJson(error=1, reason='needmethod: get')
+        return function.retJson(error=1, reason='needmethod: get')
 
 
 @csrf_exempt
@@ -117,7 +113,7 @@ def studentChange(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         studentId = request.POST.get('studentId')
         name = request.POST.get('name')
@@ -132,13 +128,13 @@ def studentChange(request):
                 stud.update(name=name, sex=sex, initPoints=initPoints)
                 # class_Account = Classes.objects.get(classNumber=classNumber)
                 # stud.update(classNumber=class_Account, name=name, sex=sex)
-                return retJson(error=0, result="change student success")
+                return function.retJson(error=0, result="change student success")
             except Exception as e:
-                return retJson(error=3, reason=str(e))
+                return function.retJson(error=3, reason=str(e))
         else:
-            return retJson(error=2, reason='Students dont exist')
+            return function.retJson(error=2, reason='Students dont exist')
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -164,16 +160,16 @@ def studentDelete(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         studentId = request.POST.get('studentId')
         if function.checkExist_student(studentId):
             try:
                 Student.objects.filter(studentId=studentId).delete()
-                return retJson(error=0, result="delete student success")
+                return function.retJson(error=0, result="delete student success")
             except Exception as e:
-                return retJson(error=3, reason=str(e))
+                return function.retJson(error=3, reason=str(e))
         else:
-            return retJson(error=2, reason='Students dont exist')
+            return function.retJson(error=2, reason='Students dont exist')
     else:
-        return retJson(error=1, reason='needmethod: post')
+        return function.retJson(error=1, reason='needmethod: post')

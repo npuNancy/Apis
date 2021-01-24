@@ -1,10 +1,26 @@
 from django.urls import path, include
 # from specificApis import apis
-from specificApis.api import ImportExport, show, studentData, student, user
+from specificApis.api import ImportExport, show, studentData, student, user, admin, grade
 
 
 urlpatterns = [
     #path('test', apis.test, name='test'),
+
+    path('admin/add', admin.adminAdd, name='adminAdd'),
+    path('admin/login', admin.login, name="adminLogin"),
+    path('admin/logout', admin.logout, name="adminLogout"),
+    path('admin/checkPass', admin.checkPass, name='checkPass'),
+    path('admin/changePass', admin.changePass, name='changePass'),
+
+    path('admin/gradeAdminAdd', admin.gradeAdminAdd, name='gradeAdminAdd'),
+    path('admin/gradeAdminGetAll', admin.gradeAdminGetAll, name='gradeAdminGetAll'),
+    path('admin/gradeAdminDelete', admin.gradeAdminDelete, name='gradeAdminDelete'),
+    path('admin/gradeAdminLogout', admin.gradeAdminLogout, name='gardeAdminLogout'),
+
+    path('grade/gradeAdd', grade.gradeAdd, name='gradeAdd'),
+    path('grade/gradeGetAll', grade.gradeGetAll, name='gradeGetAll'),
+    path('grade/gradeDelete', grade.gradeDelete, name='gradeDelete'),
+
     path('user/add', user.userAdd, name='userAdd'),
     path('user/changePass', user.userChangePass, name='userChangePass'),
     path('user/getUsername', user.getUsername, name='getUsername'),
@@ -34,4 +50,5 @@ urlpatterns = [
     path('show/getStudentData', show.getStudentData, name='getStudentData'),
 
     path('export', ImportExport.export, name='export'),
+
 ]

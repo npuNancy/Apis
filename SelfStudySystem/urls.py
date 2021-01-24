@@ -12,4 +12,9 @@ urlpatterns = [
     path('manageClass', views.manageClass, name='manageClass'),
     path('studentEdit', views.studentEdit, name='studentEdit'),
     path('studentAdd', views.studentAdd, name='studentAdd'),
+
+    path('adminLogin', views.adminLogin, name='adminLogin'),
+    path('adminIndex', views.adminIndex, name='adminIndex'),
+
+    path('gradeAdminIndex', views.gradeAdminIndex, name='gradeAdminIndex'),
 ]
