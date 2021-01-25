@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/admin/gradeAdminGetAll",
+        url: "http://127.0.0.1:8000/api/specificApis/gradeAdmin/gradeAdminGetAll",
         type: "GET",
         success: function(data) {
             if (!data.error) {
@@ -106,7 +106,7 @@ var show_grade_admin = function(gradeAdminList) {
     var html = '';
     for (i in gradeAdminList) {
         let username = gradeAdminList[i].username;
-        let garde = gradeAdminList[i].grade;
+        let garde = gradeAdminList[i].grade_id;
         let text = '<tr data-username="' + username + '" >\n';
         text += '<th scope="row">' + username + '</th>\n';
         text += '<td>' + garde + '</td>\n';
@@ -124,7 +124,7 @@ var gradeAdminDelete = function() {
             let tr = $(this).parents('tr');
             let username = tr.attr("data-username");
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/admin/gradeAdminDelete",
+                url: "http://127.0.0.1:8000/api/specificApis/gradeAdmin/gradeAdminDelete",
                 type: "POST",
                 data: {
                     "username": username
@@ -159,7 +159,7 @@ var addGradeAdmin = function() {
             alert("请选择管理年级！");
         } else {
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/admin/gradeAdminAdd",
+                url: "http://127.0.0.1:8000/api/specificApis/gradeAdmin/gradeAdminAdd",
                 type: "POST",
                 data: {
                     "username": username,

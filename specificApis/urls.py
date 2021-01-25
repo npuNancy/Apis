@@ -1,6 +1,6 @@
 from django.urls import path, include
 # from specificApis import apis
-from specificApis.api import ImportExport, show, studentData, student, user, admin, grade
+from specificApis.api import ImportExport, show, studentData, student, user, admin, grade, gradeAdmin
 
 
 urlpatterns = [
@@ -12,10 +12,14 @@ urlpatterns = [
     path('admin/checkPass', admin.checkPass, name='checkPass'),
     path('admin/changePass', admin.changePass, name='changePass'),
 
-    path('admin/gradeAdminAdd', admin.gradeAdminAdd, name='gradeAdminAdd'),
-    path('admin/gradeAdminGetAll', admin.gradeAdminGetAll, name='gradeAdminGetAll'),
-    path('admin/gradeAdminDelete', admin.gradeAdminDelete, name='gradeAdminDelete'),
-    path('admin/gradeAdminLogout', admin.gradeAdminLogout, name='gardeAdminLogout'),
+    path('gradeAdmin/gradeAdminAdd',
+         gradeAdmin.gradeAdminAdd, name='gradeAdminAdd'),
+    path('gradeAdmin/gradeAdminGetAll',
+         gradeAdmin.gradeAdminGetAll, name='gradeAdminGetAll'),
+    path('gradeAdmin/gradeAdminDelete',
+         gradeAdmin.gradeAdminDelete, name='gradeAdminDelete'),
+    path('gradeAdmin/gradeAdminLogout',
+         gradeAdmin.gradeAdminLogout, name='gardeAdminLogout'),
 
     path('grade/gradeAdd', grade.gradeAdd, name='gradeAdd'),
     path('grade/gradeGetAll', grade.gradeGetAll, name='gradeGetAll'),
