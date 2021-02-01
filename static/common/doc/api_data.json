@@ -371,6 +371,282 @@
     ]
   },
   {
+    "type": "get",
+    "url": "/specificApis/uploadStudentInfo",
+    "title": "uploadStudentInfo",
+    "version": "1.0.0",
+    "description": "<p>upload student info &amp; write student infos</p>",
+    "name": "uploadStudentInfo",
+    "group": "export",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "file",
+            "optional": false,
+            "field": "file",
+            "description": "<p>file</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get all class info success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/ImportExport.py",
+    "groupTitle": "export",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/uploadStudentInfo"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/gradeAdmin/GAchangePass",
+    "title": "GAchangePass",
+    "version": "1.0.0",
+    "description": "<p>修改密码</p>",
+    "name": "GAchangePass",
+    "group": "gradeAdmin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password_new",
+            "description": "<p>password_new</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password_old",
+            "description": "<p>password_old</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"change grade_admin's password success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/gradeAdmin.py",
+    "groupTitle": "gradeAdmin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/gradeAdmin/GAchangePass"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/gradeAdmin/GAcheckPass",
+    "title": "GAcheckPass",
+    "version": "1.0.0",
+    "description": "<p>修改密码时检查原密码正确性</p>",
+    "name": "GAcheckPass",
+    "group": "gradeAdmin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"check password success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/gradeAdmin.py",
+    "groupTitle": "gradeAdmin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/gradeAdmin/GAcheckPass"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/gradeAdmin/GAclassAdd",
+    "title": "GAclassAdd",
+    "version": "1.0.0",
+    "description": "<p>添加班级，并将会创建一个默认班级负责人，此管理员用户名和初始密码与班号相同。</p>",
+    "name": "GAclassAdd",
+    "group": "gradeAdmin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "classNumber",
+            "description": "<p>classNumber</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"create class and user success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/gradeAdmin.py",
+    "groupTitle": "gradeAdmin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/gradeAdmin/GAclassAdd"
+      }
+    ]
+  },
+  {
+    "type": "post",
+    "url": "/specificApis/gradeAdmin/GAclassDelete",
+    "title": "GAclassDelete",
+    "version": "1.0.0",
+    "description": "<p>删除班级,班级有同学的时候，拒绝删除</p>",
+    "name": "GAclassDelete",
+    "group": "gradeAdmin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "classNumber",
+            "description": "<p>classNumber</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"delete class success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/gradeAdmin.py",
+    "groupTitle": "gradeAdmin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/gradeAdmin/GAclassDelete"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/gradeAdmin/GAgetClasses",
+    "title": "GAgetClasses",
+    "version": "1.0.0",
+    "description": "<p>获取当前年级管理员管理的年级下的所有班级</p>",
+    "name": "GAgetClasses",
+    "group": "gradeAdmin",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/gradeAdmin.py",
+    "groupTitle": "gradeAdmin",
+    "sampleRequest": [
+      {
+        "url": "http://API-URL/api/specificApis/gradeAdmin/GAgetClasses"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/specificApis/gradeAdmin/gradeAdminAdd",
     "title": "gradeAdminAdd",

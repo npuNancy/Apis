@@ -78,7 +78,7 @@ def studentGet(request):
             "reason": "error reason here"
         }
     """
-    if not function.check_Session(request):
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
         return function.retJson(error=-1, reason='have not login')
     if request.method == "GET":
         value = list(Student.objects.all().values())

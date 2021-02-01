@@ -32,9 +32,9 @@ def getUsername(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     username = request.session.get('username')
-    return retJson(error=0, result=username)
+    return function.retJson(error=0, result=username)
 
 
 @csrf_exempt
@@ -59,14 +59,14 @@ def getUserClassNumber(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     try:
         username = request.session.get('username')
         classNumber = User.objects.filter(username=username).values()[
             0]['classNumber']
-        return retJson(error=0, classNumber=classNumber)
+        return function.retJson(error=0, classNumber=classNumber)
     except Exception as e:
-        return retJson(error=1, reason=str(e))
+        return function.retJson(error=1, reason=str(e))
 
 
 @csrf_exempt
@@ -94,6 +94,8 @@ def userAdd(request):
             "reason": "error reason here"
         }
     """
+    if not function.check_gradeAdminSession(request):
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -111,13 +113,13 @@ def userAdd(request):
                 class_Account = Classes(classNumber=user_Account,
                                         grade=gradeAccount)
                 class_Account.save()
-                return retJson(error=0, result="create user success")
+                return function.retJson(error=0, result="create user success")
             except Exception as e:
-                return retJson(error=1, reason=str(e))
+                return function.retJson(error=1, reason=str(e))
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=3, reason='needmethod: post')
+        return function.retJson(error=3, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -143,7 +145,7 @@ def userChangePass(request):
         }
     """
     if not function.check_Session(request):
-        return retJson(error=-1, reason='have not login')
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         username = request.session.get('username')
         password = request.POST.get('password')
@@ -152,11 +154,11 @@ def userChangePass(request):
         try:
             user_Account = User.objects.filter(username=username)
             user_Account.update(password=password)
-            return retJson(error=0, result="change user's password success")
+            return function.retJson(error=0, result="change user's password success")
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=3, reason='needmethod: post')
+        return function.retJson(error=3, reason='needmethod: post')
 
 
 @csrf_exempt
@@ -187,13 +189,13 @@ def checkPass(request):
         try:
             password = function.hash(password)
             if function.check_UserPass(username, password):
-                return retJson(error=0, result='check password success')
+                return function.retJson(error=0, result='check password success')
             else:
-                return retJson(error=3, reason='wrong password')
+                return function.retJson(error=3, reason='wrong password')
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='please use post')
+        return function.retJson(error=1, reason='please use post')
 
 
 @csrf_exempt
@@ -227,13 +229,13 @@ def login(request):
             if function.check_UserPass(username, password):
                 request.session['is_login'] = True
                 request.session['username'] = username
-                return retJson(error=0, result='login')
+                return function.retJson(error=0, result='login')
             else:
-                return retJson(error=3, reason='wrong username or password')
+                return function.retJson(error=3, reason='wrong username or password')
         except Exception as e:
-            return retJson(error=2, reason=str(e))
+            return function.retJson(error=2, reason=str(e))
     else:
-        return retJson(error=1, reason='wrong method')
+        return function.retJson(error=1, reason='wrong method')
 
 
 @csrf_exempt
@@ -259,8 +261,8 @@ def logout(request):
     """
     try:
         if not function.check_Session(request):
-            return retJson(error=-1, reason='have not login')
+            return function.retJson(error=-1, reason='have not login')
         request.session.flush()
-        return retJson(error=0, resule='logout')
+        return function.retJson(error=0, resule='logout')
     except Exception as e:
-        return retJson(error=1, reason=str(e))
+        return function.retJson(error=1, reason=str(e))

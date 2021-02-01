@@ -41,7 +41,7 @@ class Student(models.Model):
     initPoints = models.DecimalField(
         max_digits=10, decimal_places=5, default=0)
     classNumber = models.ForeignKey(
-        'Classes', to_field='classNumber', on_delete=models.CASCADE)
+        'Classes', to_field='classNumber', on_delete=models.PROTECT)
 
 
 class StudentData(models.Model):

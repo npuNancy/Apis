@@ -99,8 +99,8 @@ def gradeDelete(request):
     if not function.check_adminSession(request):
         return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
-        gradeId = request.POST.get('gradeId')
         try:
+            gradeId = request.POST.get('gradeId')
             Grade.objects.get(id=gradeId).delete()
             return function.retJson(error=0, result="delete grade success")
         except Exception as e:

@@ -255,3 +255,33 @@ def write_excel_xlsx(path, value):
         return 'success'
     except Exception as e:
         return str(e)
+
+
+def read_excel_xlsx(path):
+    '''
+    学号	    姓名	班级	晚上课程学时    是否免修
+    2020302296	张三	10012001	0	        0
+    2020302297	李四   	10012002	10	        0
+    2020302298	王五  	10012003	0	        1
+    '''
+    ret = []
+    wb = openpyxl.load_workbook(path)
+    sheet = wb.worksheets[0]
+    for i in range(2, sheet.max_row+1):
+        stuId = sheet.cell(row=i, column=1).value
+        name = sheet.cell(row=i, column=2).value
+        clas = sheet.cell(row=i, column=3).value
+        hours = sheet.cell(row=i, column=4).value
+        state = sheet.cell(row=i, column=5).value
+        if stuId == '' and name == '' and clas == '':
+            break
+        hours = 0 if hours == '' or not hours else int(hours)
+        state = 1 if state == '1' or state == 1 else 0
+        ret.append({
+            'studentId': stuId,
+            'name': name,
+            'state': state,
+            'initPoints': hours,
+            'class': clas
+        })
+    return ret

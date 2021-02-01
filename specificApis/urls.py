@@ -20,6 +20,13 @@ urlpatterns = [
          gradeAdmin.gradeAdminDelete, name='gradeAdminDelete'),
     path('gradeAdmin/gradeAdminLogout',
          gradeAdmin.gradeAdminLogout, name='gardeAdminLogout'),
+    path('gradeAdmin/GAchangePass', gradeAdmin.GAchangePass, name='GAchangePass'),
+    path('gradeAdmin/GAcheckPass', gradeAdmin.GAcheckPass, name='GAcheckPass'),
+    path('gradeAdmin/GAgetClasses', gradeAdmin.GAgetClasses, name='GAgetClasses'),
+
+    path('gradeAdmin/GAclassAdd', gradeAdmin.GAclassAdd, name='GAclassAdd'),
+    path('gradeAdmin/GAclassDelete',
+         gradeAdmin.GAclassDelete, name='GAclassDelete'),
 
     path('grade/gradeAdd', grade.gradeAdd, name='gradeAdd'),
     path('grade/gradeGetAll', grade.gradeGetAll, name='gradeGetAll'),
@@ -54,5 +61,7 @@ urlpatterns = [
     path('show/getStudentData', show.getStudentData, name='getStudentData'),
 
     path('export', ImportExport.export, name='export'),
+    path('uploadStudentInfo', ImportExport.uploadStudentInfo,
+         name='uploadStudentInfo'),
 
 ]
