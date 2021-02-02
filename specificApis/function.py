@@ -22,14 +22,6 @@ class MyEncoder(json.JSONEncoder):
             return json.JSONEncoder.default(self, obj)
 
 
-class configer():
-    conf = models.Config.objects.get(name='default')
-    startTime = str(conf.startTime)
-    endTime = str(conf.endTime)
-    requiredPoints = conf.requiredPoints
-    pointsPerHour = conf.pointsPerHour
-
-
 def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):
     return HttpResponse(json.dumps(kwargs if obj is None else obj, cls=mycls), content_type='application/json')
 
@@ -75,6 +67,12 @@ def checkExist_admin(username):
 
 
 def calDurationTime(startTime, endTime):
+    class configer():
+        conf = models.Config.objects.get(name='default')
+        startTime = str(conf.startTime)
+        endTime = str(conf.endTime)
+        requiredPoints = conf.requiredPoints
+        pointsPerHour = conf.pointsPerHour
     confi = configer()
     latestTime = datetime.strptime(confi.endTime, '%H:%M:%S')
     endTime_ = datetime.strptime(
@@ -131,6 +129,13 @@ def getStudentData(studentId):
 
 
 def getClassData(classNumber):
+
+    class configer():
+        conf = models.Config.objects.get(name='default')
+        startTime = str(conf.startTime)
+        endTime = str(conf.endTime)
+        requiredPoints = conf.requiredPoints
+        pointsPerHour = conf.pointsPerHour
     c = configer()
     requiredPoints = c.requiredPoints
 

@@ -185,8 +185,6 @@ def adminAdd(request):
             "reason": "error reason here"
         }
     """
-    if not function.check_adminSession(request):
-        return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
