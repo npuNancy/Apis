@@ -37,9 +37,9 @@ def signIn(request):
             # check if the # correct Time
             nowTime = datetime.strptime(
                 datetime.now().strftime('%H:%M:%S'), '%H:%M:%S')
-            config = function.config()
-            earliestTime = datetime.strptime(config.startTime, '%H:%M:%S')
-            latestTime = datetime.strptime(config.endTime, '%H:%M:%S')
+            conf = Config.objects.get(name='default')
+            earliestTime = datetime.strptime(str(conf.startTime), '%H:%M:%S')
+            latestTime = datetime.strptime(str(conf.startTime), '%H:%M:%S')
             if nowTime >= earliestTime and nowTime <= latestTime:
                 # correct time
                 studentId = request.POST.get('studentId')
