@@ -162,15 +162,22 @@ define({ "api": [
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "username",
-            "description": "<p>username unique</p>"
+            "field": "endTime",
+            "description": "<p>endTime</p>"
           },
           {
             "group": "Parameter",
             "type": "string",
             "optional": false,
-            "field": "password",
-            "description": "<p>password</p>"
+            "field": "startTime",
+            "description": "<p>startTime</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "requiredPoints",
+            "description": "<p>requiredPoints</p>"
           }
         ]
       }

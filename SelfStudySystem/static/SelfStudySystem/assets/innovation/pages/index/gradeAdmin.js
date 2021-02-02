@@ -57,7 +57,7 @@ var show_users = function(userList) {
 // 删除班级
 var classDelete = function() {
     $(".classDelete").click(function() {
-        var yes = confirm("确认删除?")
+        var yes = confirm("确认删除?\n(若班级还存在学生，将拒绝级联删除！)")
         if (yes) {
             let tr = $(this).parents('tr');
             let classNumber = tr.attr("data-classId");
@@ -162,8 +162,9 @@ var infoAdd = function() {
     $("#addInfos").click(function() {
         $("#form_addInfo").ajaxSubmit(function(data) {
             if (!data.error) {
+                alert("导入成功");
                 window.location.href = "adminIndex";
-                console.log("success")
+                console.log("success");
             } else if (data.error == -2) {
                 alert("未上传文件");
             } else if (data.error == -3) {
@@ -173,7 +174,7 @@ var infoAdd = function() {
             } else if (data.error == -5) {
                 alert("班级不存在，请先创建班级后，再次上次");
             } else {
-                alert("添加失败");
+                alert("添加失败,请检查以下问题：\n1.需要上传.xlsx类型文件\n2.学号存在重复\n3.班级不存在，请先创建班级后，再次上次");
                 console.log(data.reason);
             }
         })

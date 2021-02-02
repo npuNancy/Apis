@@ -4,9 +4,9 @@ from specificApis.api import ImportExport, show, studentData, student, user, adm
 
 
 urlpatterns = [
-    #path('test', apis.test, name='test'),
+    # path('test', apis.test, name='test'),
 
-    path('admin/add', admin.adminAdd, name='adminAdd'),
+    # path('admin/add', admin.adminAdd, name='adminAdd'),
     path('admin/login', admin.login, name="adminLogin"),
     path('admin/logout', admin.logout, name="adminLogout"),
     path('admin/checkPass', admin.checkPass, name='checkPass'),

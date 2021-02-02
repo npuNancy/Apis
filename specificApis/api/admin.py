@@ -244,8 +244,9 @@ def editConfig(request):
     @apiDescription 修改开始结束时间、要求时长等配置信息
     @apiName editConfig
     @apiGroup admin
-    @apiParam {string} username username unique
-    @apiParam {string} password password
+    @apiParam {string} endTime endTime
+    @apiParam {string} startTime startTime
+    @apiParam {string} requiredPoints requiredPoints
     @apiSuccessExample {json} Success-Response:
         HTTP/1.1 200 OK
         {

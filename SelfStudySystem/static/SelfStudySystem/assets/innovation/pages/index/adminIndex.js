@@ -6,7 +6,6 @@ $(document).ready(function() {
             if (!data.error) {
                 show_grade_admin(data.result); // 显示年级管理员列表
                 gradeAdminDelete(); // 删除年级管理员
-                changePassword(); // 修改密码
                 addGradeAdmin(); // 添加年级管理员
             } else {
                 console.log(data.reason);
@@ -31,6 +30,7 @@ $(document).ready(function() {
     });
 
     logout();
+    changePassword(); // 修改密码
     showConfig();
 });
 
@@ -90,11 +90,12 @@ var changePassword = function() {
                     },
                     success: function(data) {
                         if (!data.error) {
-                            $("this").ajaxSubmit({
-                                url: "/api/specificApis/admin/logout",
-                                type: "GET"
-                            })
-                            window.location.href = "/adminLogin";
+                            // $("this").ajaxSubmit({
+                            //     url: "/api/specificApis/admin/logout",
+                            //     type: "GET"
+                            // })
+                            $("#log_out").click();
+                            // window.location.href = "/adminLogin";
                         } else {
                             console.log(data.reason);
                         }
@@ -228,7 +229,7 @@ var show_grade = function(gradeList) {
 // 删除年级 
 var gradeDelete = function() {
     $(".gradeDelete").click(function() {
-        var yes = confirm("确认删除?")
+        var yes = confirm("确认删除?\n(若有关联则拒绝级联删除)")
         if (yes) {
             let tr = $(this).parents('tr');
             let gradeId = tr.attr("data-gradeId");
@@ -306,13 +307,13 @@ var showConfig = function() {
 var editConfig = function() {
     $("#edit_config_btn").click(function() {
 
-        var yes = confirm("确认删除?")
+        var yes = confirm("确认修改?")
         if (yes) {
             $("#form_editConfig").ajaxSubmit(function(data) {
                 if (!data.error) {
                     window.location.href = "adminIndex";
                 } else {
-                    alert("添加失败");
+                    alert("修改失败");
                     console.log(data.reason);
                 }
             })

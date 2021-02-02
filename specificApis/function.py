@@ -9,6 +9,14 @@ from django.http import HttpResponse
 from datetime import datetime, timedelta, timezone, date
 
 
+class configer():
+    conf = models.Config.objects.get(name='default')
+    startTime = str(conf.startTime)
+    endTime = str(conf.endTime)
+    requiredPoints = conf.requiredPoints
+    pointsPerHour = conf.pointsPerHour
+
+
 class MyEncoder(json.JSONEncoder):
 
     def default(self, obj):
@@ -67,12 +75,6 @@ def checkExist_admin(username):
 
 
 def calDurationTime(startTime, endTime):
-    class configer():
-        conf = models.Config.objects.get(name='default')
-        startTime = str(conf.startTime)
-        endTime = str(conf.endTime)
-        requiredPoints = conf.requiredPoints
-        pointsPerHour = conf.pointsPerHour
     confi = configer()
     latestTime = datetime.strptime(confi.endTime, '%H:%M:%S')
     endTime_ = datetime.strptime(
@@ -130,12 +132,6 @@ def getStudentData(studentId):
 
 def getClassData(classNumber):
 
-    class configer():
-        conf = models.Config.objects.get(name='default')
-        startTime = str(conf.startTime)
-        endTime = str(conf.endTime)
-        requiredPoints = conf.requiredPoints
-        pointsPerHour = conf.pointsPerHour
     c = configer()
     requiredPoints = c.requiredPoints
 
