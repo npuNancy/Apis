@@ -22,7 +22,7 @@ class MyEncoder(json.JSONEncoder):
             return json.JSONEncoder.default(self, obj)
 
 
-class config():
+class configer():
     conf = models.Config.objects.get(name='default')
     startTime = str(conf.startTime)
     endTime = str(conf.endTime)
@@ -75,7 +75,7 @@ def checkExist_admin(username):
 
 
 def calDurationTime(startTime, endTime):
-    confi = config()
+    confi = configer()
     latestTime = datetime.strptime(confi.endTime, '%H:%M:%S')
     endTime_ = datetime.strptime(
         endTime.strftime('%H:%M:%S'), '%H:%M:%S')
@@ -131,7 +131,7 @@ def getStudentData(studentId):
 
 
 def getClassData(classNumber):
-    c = config()
+    c = configer()
     requiredPoints = c.requiredPoints
 
     students = models.Student.objects.filter(

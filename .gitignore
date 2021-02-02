@@ -1,6 +1,12 @@
 SECRET_KEY
 common/static/common/doc
 
+# files
+file/download/*
+file/upload/*
+specificApis/file/download/*
+specificApis/file/upload/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
