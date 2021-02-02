@@ -120,7 +120,7 @@ def studentChange(request):
         sex = request.POST.get('sex')
         sex = 1 if(sex == "男") else 0
         initPoints = request.POST.get('initPoints')
-        print(studentId)
+
         # classNumber = request.POST.get('classNumber')
         if function.checkExist_student(studentId):
             try:

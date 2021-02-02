@@ -135,7 +135,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
+                        <li class="m-menu__item  m-menu__item--active" id="signIN" aria-haspopup="true">
                             <a href="{% url 'signIN' %}" class="m-menu__link ">
                                 <i class="m-menu__link-icon flaticon-interface-1"></i>
                                 <span class="m-menu__link-title">
@@ -146,13 +146,24 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
+                        <!-- <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
                             <a href="{% url 'manageClass' %}" class="m-menu__link ">
                                 <i class="m-menu__link-icon flaticon-interface-1"></i>
                                 <span class="m-menu__link-title">
                                     <span class="m-menu__link-wrap">
                                         <span class="m-menu__link-text">
                                             班级管理
+                                        </span>
+                                </span>
+                            </a>
+                        </li> -->
+                        <li class="m-menu__item  m-menu__item--active gradeAdminIndex" aria-haspopup="true" style="display: none;">
+                            <a href="{% url 'gradeAdminIndex' %}" class="m-menu__link ">
+                                <i class="m-menu__link-icon flaticon-interface-1"></i>
+                                <span class="m-menu__link-title">
+                                    <span class="m-menu__link-wrap">
+                                        <span class="m-menu__link-text">
+                                            年级管理员首页
                                         </span>
                                 </span>
                             </a>

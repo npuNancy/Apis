@@ -11,6 +11,9 @@ urlpatterns = [
     path('admin/logout', admin.logout, name="adminLogout"),
     path('admin/checkPass', admin.checkPass, name='checkPass'),
     path('admin/changePass', admin.changePass, name='changePass'),
+    path('admin/getConfig', admin.getConfig, name='getConfig'),
+    path('admin/editConfig', admin.editConfig, name='editConfig'),
+
 
     path('gradeAdmin/gradeAdminAdd',
          gradeAdmin.gradeAdminAdd, name='gradeAdminAdd'),
@@ -57,6 +60,7 @@ urlpatterns = [
          studentData.getClassStudents, name='getClassStudents'),
 
     path('show/getAllClass', show.getAllClass, name='getAllClass'),
+    path('show/getGradeClass', show.getGradeClass, name='getGradeClass'),
     path('show/getClassData', show.getClassData, name='getClassData'),
     path('show/getStudentData', show.getStudentData, name='getStudentData'),
 

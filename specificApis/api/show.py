@@ -30,7 +30,7 @@ def getStudentData(request):
             "reason": "error reason here"
         }
     """
-    if not function.check_Session(request):
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
         return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         try:
@@ -65,7 +65,7 @@ def getClassData(request):
             "reason": "error reason here"
         }
     """
-    if not function.check_Session(request):
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
         return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
         try:
@@ -84,7 +84,7 @@ def getAllClass(request):
     """
     @api {get} /specificApis/show/getAllClass getAllClass
     @apiVersion 1.0.0
-    @apiDescription get this grades's all class info
+    @apiDescription get all class info
     @apiName getAllClass
     @apiGroup show
     @apiSuccessExample {json} Success-Response:
@@ -100,6 +100,8 @@ def getAllClass(request):
             "reason": "error reason here"
         }
     """
+    if not function.check_gradeAdminSession(request):
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "GET":
         try:
             classes = Classes.objects.filter().values()
@@ -117,6 +119,74 @@ def getAllClass(request):
                 'requiredPeople': requiredPeople
             }
             return function.retJson(error=0, result=result, classInfo=classInfo, mycls=function.MyEncoder)
+        except Exception as e:
+            return function.retJson(error=2, reason=str(e))
+    else:
+        return function.retJson(error=1, reason='needmethod: get')
+
+
+@csrf_exempt
+def getGradeClass(request):
+    """
+    @api {get} /specificApis/show/getGradeClass getGradeClass
+    @apiVersion 1.0.0
+    @apiDescription get one grades's all class info
+    @apiName getGradeClass
+    @apiGroup show
+    @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 0,
+            "result": "get class info success"
+        }
+    @apiErrorExample {json} Error-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 1,
+            "reason": "error reason here"
+        }
+    """
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
+        return function.retJson(error=-1, reason='have not login')
+    if request.method == "GET":
+        try:
+            if function.check_Session(request):
+                username = request.session.get('username')
+                classNum = User.objects.get(username=username).classNumber
+                classes = Classes.objects.filter(classNumber=classNum).values()
+                people = 0
+                requiredPeople = 0
+                classInfo = []
+                for cl in classes:
+                    classNumber = cl['classNumber_id']
+                    info = function.getClassData(classNumber)[0]
+                    people += info['number']
+                    requiredPeople += info['requiredPeople']
+                    classInfo.append(info)
+                result = {
+                    'people': people,
+                    'requiredPeople': requiredPeople
+                }
+                return function.retJson(error=0, result=result, classInfo=classInfo, mycls=function.MyEncoder, role='user')
+
+            elif function.check_gradeAdminSession(request):
+                username = request.session.get('username_grade')
+                grade = GradeAdmin.objects.get(username=username).grade.grade
+                classes = Classes.objects.filter(grade=grade).values()
+                people = 0
+                requiredPeople = 0
+                classInfo = []
+                for cl in classes:
+                    classNumber = cl['classNumber_id']
+                    info = function.getClassData(classNumber)[0]
+                    people += info['number']
+                    requiredPeople += info['requiredPeople']
+                    classInfo.append(info)
+                result = {
+                    'people': people,
+                    'requiredPeople': requiredPeople
+                }
+                return function.retJson(error=0, result=result, classInfo=classInfo, mycls=function.MyEncoder, role='gradeAdmin')
         except Exception as e:
             return function.retJson(error=2, reason=str(e))
     else:

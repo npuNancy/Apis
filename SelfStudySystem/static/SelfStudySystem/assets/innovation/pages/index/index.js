@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/show/getAllClass",
+        url: "/api/specificApis/show/getGradeClass",
         type: "GET",
         success: function(data) {
             if (!data.error) {
@@ -9,6 +9,9 @@ $(document).ready(function() {
                 var classInfo = data.classInfo;
                 $('.head-text').text('达标人数/总人数：' + required + '/' + people)
                 details(classInfo);
+                if (data.role == 'gradeAdmin') {
+                    $(".export_block").show();
+                }
             } else {
                 console.log(data.reason);
             }
@@ -31,8 +34,7 @@ var details = function(classInfo) {
         let text = '<tr>\n<th scope="row"><a target="_blank" href="class?classNumber=' + classNumber + '">' + classNumber + '</a></th>\n';
         text += '<td>' + averTime + '</td>\n';
         text += '<td>' + reqPeople + '</td>\n';
-        // text += '<td>' + allPeople + '</td>\n</tr>\n';
-        text += '<td><button type="button" class="btn ' + btn2_color + ' btn-askLeave"' + btn2_dis + '>请假</button></td>\n</tr>\n';
+        text += '<td>' + allPeople + '</td>\n</tr>\n';
         html += text;
     }
     tbody.append(html);

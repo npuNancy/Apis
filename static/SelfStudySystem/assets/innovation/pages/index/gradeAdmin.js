@@ -8,7 +8,6 @@ $(document).ready(function() {
                 $("#my_grade").text("负责年级：" + data.grade);
                 show_class(data.classes);
                 show_users(data.users);
-                classAdd(); // 添加班级
                 classDelete(); // 删除班级
             } else {
                 console.log(data.reason);
@@ -16,7 +15,9 @@ $(document).ready(function() {
         }
     });
 
-    changePassword();
+    classAdd(); // 添加班级
+    infoAdd(); // 批量添加学生信息
+    changePassword(); // 更改密码
     logout();
 });
 
@@ -36,8 +37,8 @@ var show_class = function(classList) {
     tbody.append(html);
 }
 
+// 显示班级负责人列表
 var show_users = function(userList) {
-    console.log(userList);
     var tbody = $("#tbody_user");
     var html = '';
     for (i in userList) {
@@ -117,7 +118,7 @@ var logout = function() {
                     alert("请求失败！");
                 } else {
                     console.log("logout success");
-                    window.location.href = "http://127.0.0.1:8000/gradeAdminIndex";
+                    window.location.href = "/gradeAdminIndex";
                 }
             }
         });
@@ -153,5 +154,28 @@ var changePassword = function() {
                 }
             });
         }
+    });
+}
+
+// 批量添加
+var infoAdd = function() {
+    $("#addInfos").click(function() {
+        $("#form_addInfo").ajaxSubmit(function(data) {
+            if (!data.error) {
+                window.location.href = "adminIndex";
+                console.log("success")
+            } else if (data.error == -2) {
+                alert("未上传文件");
+            } else if (data.error == -3) {
+                alert("添加失败, 需要上传.xlsx类型文件");
+            } else if (data.error == -4) {
+                alert("学号存在重复！请检查后再次上传");
+            } else if (data.error == -5) {
+                alert("班级不存在，请先创建班级后，再次上次");
+            } else {
+                alert("添加失败");
+                console.log(data.reason);
+            }
+        })
     });
 }

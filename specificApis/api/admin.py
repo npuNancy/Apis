@@ -35,6 +35,7 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         try:
+            request.session.flush()
             password = function.hash(password)
             res_admin = function.check_adminPass(username, password)
             res_grade = function.check_gradeAdminPass(username, password)
@@ -200,3 +201,78 @@ def adminAdd(request):
             return function.retJson(error=2, reason=str(e))
     else:
         return function.retJson(error=3, reason='need method: post')
+
+
+@csrf_exempt
+def getConfig(request):
+    """
+    @api {get} /specificApis/admin/getConfig getConfig
+    @apiVersion 1.0.0
+    @apiDescription 查看开始结束时间、要求时长等配置信息
+    @apiName getConfig
+    @apiGroup admin
+    @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 0,
+            "result": "{'startTime':'xxx', ……}"
+        }
+    @apiErrorExample {json} Error-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 1,
+            "reason": "error reason here"
+        }
+    """
+    try:
+        if not function.check_adminSession(request):
+            return function.retJson(error=-1, reason='have not login')
+
+        conf = Config.objects.get(name='default')
+        rets = {'startTime': str(conf.startTime),
+                'endTime': str(conf.endTime),
+                'requiredPoints': conf.requiredPoints,
+                'pointsPerHour': conf.pointsPerHour}
+        return function.retJson(error=0, result=rets)
+    except Exception as e:
+        return function.retJson(error=1, reason=str(e))
+
+
+@csrf_exempt
+def editConfig(request):
+    """
+    @api {post} /specificApis/admin/editConfig editConfig
+    @apiVersion 1.0.0
+    @apiDescription 修改开始结束时间、要求时长等配置信息
+    @apiName editConfig
+    @apiGroup admin
+    @apiParam {string} username username unique
+    @apiParam {string} password password
+    @apiSuccessExample {json} Success-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 0,
+            "result": "edit config success"
+        }
+    @apiErrorExample {json} Error-Response:
+        HTTP/1.1 200 OK
+        {
+            "error": 1,
+            "reason": "error reason here"
+        }
+    """
+    try:
+        if not function.check_adminSession(request):
+            return function.retJson(error=-1, reason='have not login')
+        if request.method == "POST":
+            conf = Config.objects.get(name='default')
+            conf.endTime = request.POST.get('endTime')
+            conf.startTime = request.POST.get('startTime')
+            conf.requiredPoints = request.POST.get('requiredPoints')
+            # conf.pointsPerHour = request.POST.get('pointsPerHour')
+            conf.save()
+            return function.retJson(error=0, resule="edit config success")
+        else:
+            return function.retJson(error=3, reason='needmethod: post')
+    except Exception as e:
+        return function.retJson(error=1, reason=str(e))

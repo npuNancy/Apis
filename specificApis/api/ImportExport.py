@@ -30,6 +30,8 @@ def export(request):
             "reason": "error reason here"
         }
     """
+    if not function.check_gradeAdminSession(request):
+        return function.retJson(error=-1, reason='have not login')
     if request.method == "GET":
         try:
             now = datetime.now().strftime('%Y_%m_%d')

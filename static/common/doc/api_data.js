@@ -149,6 +149,94 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/specificApis/admin/editConfig",
+    "title": "editConfig",
+    "version": "1.0.0",
+    "description": "<p>修改开始结束时间、要求时长等配置信息</p>",
+    "name": "editConfig",
+    "group": "admin",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username unique</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"edit config success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/admin/editConfig"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/admin/getConfig",
+    "title": "getConfig",
+    "version": "1.0.0",
+    "description": "<p>查看开始结束时间、要求时长等配置信息</p>",
+    "name": "getConfig",
+    "group": "admin",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"{'startTime':'xxx', ……}\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/admin.py",
+    "groupTitle": "admin",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/admin/getConfig"
+      }
+    ]
+  },
+  {
+    "type": "post",
     "url": "/specificApis/admin/login",
     "title": "login",
     "version": "1.0.0",
@@ -962,7 +1050,7 @@ define({ "api": [
     "url": "/specificApis/show/getAllClass",
     "title": "getAllClass",
     "version": "1.0.0",
-    "description": "<p>get this grades's all class info</p>",
+    "description": "<p>get all class info</p>",
     "name": "getAllClass",
     "group": "show",
     "success": {
@@ -1035,6 +1123,40 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": window.location.origin + "/api/specificApis/show/getClassData"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/specificApis/show/getGradeClass",
+    "title": "getGradeClass",
+    "version": "1.0.0",
+    "description": "<p>get one grades's all class info</p>",
+    "name": "getGradeClass",
+    "group": "show",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 0,\n    \"result\": \"get class info success\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"error\": 1,\n    \"reason\": \"error reason here\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./specificApis/api/show.py",
+    "groupTitle": "show",
+    "sampleRequest": [
+      {
+        "url": window.location.origin + "/api/specificApis/show/getGradeClass"
       }
     ]
   },

@@ -13,7 +13,7 @@ $(document).ready(function() {
             console.log(pass2)
             var flag = false;
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/user/checkPass",
+                url: "/api/specificApis/user/checkPass",
                 type: "POST",
                 data: {
                     "password": oldPass
@@ -31,7 +31,7 @@ $(document).ready(function() {
             });
             if (flag) {
                 $(this).ajaxSubmit({
-                    url: "http://127.0.0.1:8000/api/specificApis/user/changePass",
+                    url: "/api/specificApis/user/changePass",
                     type: "POST",
                     data: {
                         "password": pass1
@@ -39,10 +39,10 @@ $(document).ready(function() {
                     success: function(data) {
                         if (!data.error) {
                             $("this").ajaxSubmit({
-                                url: "http://127.0.0.1:8000/api/specificApis/login/logout",
+                                url: "/api/specificApis/login/logout",
                                 type: "GET"
                             })
-                            window.location.href = "http://127.0.0.1:8000/login";
+                            window.location.href = "/login";
                         } else {
                             console.log(data.reason);
                         }

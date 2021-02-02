@@ -7,11 +7,13 @@ from django.urls import reverse
 
 
 def index(request):
-    return render(request, 'index.html', {"type": "user"})
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
+        return HttpResponseRedirect("/login")
+    return render(request, 'index.html')
 
 
 def login(request):
-    if function.check_Session(request):
+    if function.check_Session(request) or function.check_gradeAdminSession(request):
         return HttpResponseRedirect("/index")
     return render(request, 'login.html', {"type": "user"})
 
@@ -49,7 +51,7 @@ def studentAdd(request):
 
 
 def classes(request):
-    if not function.check_Session(request):
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
         return HttpResponseRedirect("/login")
     if 'classNumber' in request.GET:
         classNumber = request.GET['classNumber']
@@ -59,7 +61,7 @@ def classes(request):
 
 
 def student(request):
-    if not function.check_Session(request):
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
         return HttpResponseRedirect("/login")
     if 'studentId' in request.GET:
         studentId = request.GET['studentId']

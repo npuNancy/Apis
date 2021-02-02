@@ -33,43 +33,47 @@ def signIn(request):
     if not function.check_Session(request):
         return function.retJson(error=-1, reason='have not login')
     if request.method == "POST":
-        # check if the # correct Time
-        nowTime = datetime.strptime(
-            datetime.now().strftime('%H:%M:%S'), '%H:%M:%S')
-        config = function.config()
-        earliestTime = datetime.strptime(config.startTime, '%H:%M:%S')
-        latestTime = datetime.strptime(config.endTime, '%H:%M:%S')
-        if nowTime >= earliestTime and nowTime <= latestTime:
-            # correct time
-            studentId = request.POST.get('studentId')
-            dateToday = date.today()
-            if function.checkExist_student(studentId):
-                student_Account = Student.objects.get(
-                    studentId=studentId)
-                flag_askLeave = StudentData.objects.filter(
-                    studentId=student_Account, date=dateToday, state=1)
-                if not flag_askLeave:
-                    flag_notOver = StudentData.objects.filter(
-                        studentId=student_Account, date=dateToday, state=2)
-                    if not flag_notOver:
-                        try:
-                            obje_Data = StudentData(
-                                studentId=student_Account, state=2)
-                            obje_Data.save()
-                            values = StudentData.objects.filter(
-                                studentId=student_Account, date=dateToday, state=2).values()[0]
-                            return function.retJson(error=0, result='sign in success', values=values, mycls=function.MyEncoder)
-                        except Exception as e:
-                            return function.retJson(error=6, reason=str(e))
+        try:
+            # check if the # correct Time
+            nowTime = datetime.strptime(
+                datetime.now().strftime('%H:%M:%S'), '%H:%M:%S')
+            config = function.config()
+            earliestTime = datetime.strptime(config.startTime, '%H:%M:%S')
+            latestTime = datetime.strptime(config.endTime, '%H:%M:%S')
+            if nowTime >= earliestTime and nowTime <= latestTime:
+                # correct time
+                studentId = request.POST.get('studentId')
+                dateToday = date.today()
+                if function.checkExist_student(studentId):
+                    student_Account = Student.objects.get(
+                        studentId=studentId)
+                    flag_askLeave = StudentData.objects.filter(
+                        studentId=student_Account, date=dateToday, state=1)
+                    if not flag_askLeave:
+                        flag_notOver = StudentData.objects.filter(
+                            studentId=student_Account, date=dateToday, state=2)
+                        if not flag_notOver:
+                            try:
+                                obje_Data = StudentData(
+                                    studentId=student_Account, state=2)
+                                obje_Data.save()
+                                values = StudentData.objects.filter(
+                                    studentId=student_Account, date=dateToday, state=2).values()[0]
+                                return function.retJson(error=0, result='sign in success', values=values, mycls=function.MyEncoder)
+                            except Exception as e:
+                                return function.retJson(error=6, reason=str(e))
+                        else:
+                            return function.retJson(error=5, reason='not over yet')
                     else:
-                        return function.retJson(error=5, reason='not over yet')
+                        return function.retJson(error=4, reason='has asked for leave')
                 else:
-                    return function.retJson(error=4, reason='has asked for leave')
+                    return function.retJson(error=3, reason='Students dont exist')
             else:
-                return function.retJson(error=3, reason='Students dont exist')
-        else:
-            # incorrect time
-            return function.retJson(error=2, reason='incorrect time')
+                # incorrect time
+                return function.retJson(error=2, reason='incorrect time')
+        except Exception as e:
+            return function.retJson(error=6, reason=str(e))
+
     else:
         return function.retJson(error=1, reason='needmethod: post')
 
@@ -100,11 +104,11 @@ def signOut(request):
     if not function.check_Session(request):
         return function.retJson(error=-1, reason='have not login')
     if request.method == 'POST':
-        studentId = request.POST.get('studentId')
-        dataId = request.POST.get('dataId')
-        dateToday = date.today()
-        if function.checkExist_student(studentId):
-            try:
+        try:
+            studentId = request.POST.get('studentId')
+            dataId = request.POST.get('dataId')
+            dateToday = date.today()
+            if function.checkExist_student(studentId):
                 data = StudentData.objects.get(id=dataId)
                 if data.state == 2:
                     data.state = 3
@@ -119,16 +123,17 @@ def signOut(request):
                     return function.retJson(error=0, result='sign out success', values=values, mycls=function.MyEncoder)
                 else:
                     return function.retJson(error=4, reason='wrong state')
-            except Exception as e:
-                return function.retJson(error=3, reason=str(e))
-        else:
-            return function.retJson(error=2, reason='Students dont exist')
+            else:
+                return function.retJson(error=2, reason='Students dont exist')
+        except Exception as e:
+            return function.retJson(error=3, reason=str(e))
     else:
         return function.retJson(error=1, reason='needmethod: POST')
 
 
 @csrf_exempt
 def askLeave(request):
+    # will not use
     """
     @api {post} /specificApis/studentData/askLeave askLeave
     @apiVersion 1.0.0

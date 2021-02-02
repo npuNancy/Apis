@@ -31,10 +31,15 @@ def getUsername(request):
             "reason": "error reason here"
         }
     """
-    if not function.check_Session(request):
+    if not function.check_Session(request) and not function.check_gradeAdminSession(request):
         return function.retJson(error=-1, reason='have not login')
-    username = request.session.get('username')
-    return function.retJson(error=0, result=username)
+    if function.check_Session(request):
+        username = request.session.get('username')
+        role = 'user'
+    elif function.check_gradeAdminSession(request):
+        username = request.session.get('username_grade')
+        role = 'gradeAdmin'
+    return function.retJson(error=0, result=username, role=role)
 
 
 @csrf_exempt
@@ -222,9 +227,10 @@ def login(request):
         }
     """
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
         try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            request.session.flush()
             password = function.hash(password)
             if function.check_UserPass(username, password):
                 request.session['is_login'] = True

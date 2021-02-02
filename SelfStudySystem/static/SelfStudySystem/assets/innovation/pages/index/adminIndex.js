@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/gradeAdmin/gradeAdminGetAll",
+        url: "/api/specificApis/gradeAdmin/gradeAdminGetAll",
         type: "GET",
         success: function(data) {
             if (!data.error) {
@@ -15,7 +15,7 @@ $(document).ready(function() {
     });
 
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/grade/gradeGetAll",
+        url: "/api/specificApis/grade/gradeGetAll",
         type: "GET",
         success: function(data) {
             if (!data.error) {
@@ -30,22 +30,27 @@ $(document).ready(function() {
         }
     });
 
+    logout();
+    showConfig();
+});
+
+// 注销
+var logout = function() {
     $("#log_out").click(function() {
         $(this).ajaxSubmit({
-            url: "http://127.0.0.1:8000/api/specificApis/admin/logout",
+            url: "/api/specificApis/admin/logout",
             type: "GET",
             success: function(data) {
                 if (data.error) {
                     alert("请求失败！");
                 } else {
                     console.log("logout success");
-                    window.location.href = "http://127.0.0.1:8000/adminIndex";
+                    window.location.href = "/adminIndex";
                 }
             }
         });
     });
-});
-
+}
 
 // 修改密码
 var changePassword = function() {
@@ -60,7 +65,7 @@ var changePassword = function() {
         } else {
             var flag = false;
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/admin/checkPass",
+                url: "/api/specificApis/admin/checkPass",
                 type: "POST",
                 data: {
                     "password": oldPass
@@ -78,7 +83,7 @@ var changePassword = function() {
             });
             if (flag) {
                 $(this).ajaxSubmit({
-                    url: "http://127.0.0.1:8000/api/specificApis/admin/changePass",
+                    url: "/api/specificApis/admin/changePass",
                     type: "POST",
                     data: {
                         "password": pass1
@@ -86,10 +91,10 @@ var changePassword = function() {
                     success: function(data) {
                         if (!data.error) {
                             $("this").ajaxSubmit({
-                                url: "http://127.0.0.1:8000/api/specificApis/admin/logout",
+                                url: "/api/specificApis/admin/logout",
                                 type: "GET"
                             })
-                            window.location.href = "http://127.0.0.1:8000/adminLogin";
+                            window.location.href = "/adminLogin";
                         } else {
                             console.log(data.reason);
                         }
@@ -124,7 +129,7 @@ var gradeAdminDelete = function() {
             let tr = $(this).parents('tr');
             let username = tr.attr("data-username");
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/gradeAdmin/gradeAdminDelete",
+                url: "/api/specificApis/gradeAdmin/gradeAdminDelete",
                 type: "POST",
                 data: {
                     "username": username
@@ -132,7 +137,7 @@ var gradeAdminDelete = function() {
                 success: function(data) {
                     if (!data.error) {
                         console.log("success");
-                        window.location.href = "http://127.0.0.1:8000/adminIndex";
+                        window.location.href = "/adminIndex";
                     } else {
                         console.log(data.reason);
                         alert("失败！\n");
@@ -159,7 +164,7 @@ var addGradeAdmin = function() {
             alert("请选择管理年级！");
         } else {
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/gradeAdmin/gradeAdminAdd",
+                url: "/api/specificApis/gradeAdmin/gradeAdminAdd",
                 type: "POST",
                 data: {
                     "username": username,
@@ -168,7 +173,7 @@ var addGradeAdmin = function() {
                 },
                 success: function(data) {
                     if (!data.error) {
-                        window.location.href = "http://127.0.0.1:8000/adminIndex";
+                        window.location.href = "/adminIndex";
                     } else {
                         alert("添加失败！");
                         console.log(data.reason);
@@ -228,7 +233,7 @@ var gradeDelete = function() {
             let tr = $(this).parents('tr');
             let gradeId = tr.attr("data-gradeId");
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/grade/gradeDelete",
+                url: "/api/specificApis/grade/gradeDelete",
                 type: "POST",
                 data: {
                     "gradeId": gradeId
@@ -236,7 +241,7 @@ var gradeDelete = function() {
                 success: function(data) {
                     if (!data.error) {
                         console.log("success");
-                        window.location.href = "http://127.0.0.1:8000/adminIndex";
+                        window.location.href = "/adminIndex";
                     } else {
                         console.log(data.reason);
                         alert("失败！\n");
@@ -256,7 +261,7 @@ var gradeAdd = function() {
             alert("不能为空!");
         } else {
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/grade/gradeAdd",
+                url: "/api/specificApis/grade/gradeAdd",
                 type: "POST",
                 data: {
                     "grade": grade,
@@ -264,7 +269,7 @@ var gradeAdd = function() {
                 },
                 success: function(data) {
                     if (!data.error) {
-                        window.location.href = "http://127.0.0.1:8000/adminIndex";
+                        window.location.href = "/adminIndex";
                     } else {
                         alert("添加失败!")
                         console.log(data);
@@ -273,4 +278,44 @@ var gradeAdd = function() {
             })
         }
     })
+}
+
+// 显示配置信息
+var showConfig = function() {
+    $(".edit_config").click(function() {
+        $.ajax({
+            url: "/api/specificApis/admin/getConfig",
+            type: "GET",
+            success: function(data) {
+                if (!data.error) {
+                    $("#endTime").val(data.result.endTime);
+                    $("#startTime").val(data.result.startTime);
+                    $("#requiredPoints").val(data.result.requiredPoints);
+
+                    editConfig();
+                } else {
+                    alert("出现错误");
+                    console.log(data.reason);
+                }
+            }
+        })
+    });
+}
+
+// 修改配置信息
+var editConfig = function() {
+    $("#edit_config_btn").click(function() {
+
+        var yes = confirm("确认删除?")
+        if (yes) {
+            $("#form_editConfig").ajaxSubmit(function(data) {
+                if (!data.error) {
+                    window.location.href = "adminIndex";
+                } else {
+                    alert("添加失败");
+                    console.log(data.reason);
+                }
+            })
+        }
+    });
 }

@@ -44,7 +44,7 @@ var SnippetLogin = function() {
                     l.valid() && (
                         a.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0),
                         l.ajaxSubmit({
-                            url: "http://127.0.0.1:8000/api/specificApis/login/login",
+                            url: "/api/specificApis/login/login",
                             type: "POST",
                             data: {
                                 'username': $("#username").val(),
@@ -58,7 +58,7 @@ var SnippetLogin = function() {
                                 } else {
                                     console.log("login success");
                                     console.log(data.result);
-                                    window.location.href = "http://127.0.0.1:8000/index";
+                                    window.location.href = "/index";
                                 }
                             }
                         }))

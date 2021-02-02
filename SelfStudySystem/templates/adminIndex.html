@@ -128,6 +128,17 @@
                                 </span>
                             </a>
                         </li>
+                        <li class="m-menu__item  m-menu__item--active edit_config" aria-haspopup="true">
+                            <a href="#" class="m-menu__link " data-toggle="modal" data-target="#m_modal_edit_config">
+                                <i class="m-menu__link-icon flaticon-interface-8"></i>
+                                <span class="m-menu__link-title">
+                                    <span class="m-menu__link-wrap">
+                                        <span class="m-menu__link-text">
+                                            修改时间等信息
+                                        </span>
+                                </span>
+                            </a>
+                        </li>
                         <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
                             <a href="#" class="m-menu__link" id="log_out">
                                 <i class="m-menu__link-icon flaticon-logout"></i>
@@ -391,6 +402,51 @@
                         </div>
                     </div>
                     <!--end::Modal::m_modal_add_grade-->
+
+                    <!--begin::Modal::m_modal_edit_config-->
+                    <div class="modal fade" id="m_modal_edit_config" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <form id='form_editConfig' method="POST" action="/api/specificApis/admin/editConfig" target="#">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            修改时间等信息
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">
+                                            &times;
+                                        </span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="m-portlet__body">
+                                            <div class="form-group m-form__group">
+                                                <label> 开始时间(必填) </label>
+                                                <input class="form-control m-input m-input--air" name="startTime" id="startTime" type="time">
+                                            </div>
+                                            <div class="form-group m-form__group">
+                                                <label> 结束时间(必填) </label>
+                                                <input class="form-control m-input m-input--air" name="endTime" id="endTime" type="time">
+                                            </div>
+                                            <div class="form-group m-form__group">
+                                                <label> 输入要求总时长(必填) </label>
+                                                <input type="text" class="form-control m-input m-input--air" id="requiredPoints" name="requiredPoints" placeholder="requiredPoints">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        取消
+                                    </button>
+                                        <button type="button" class="btn btn-primary" id="edit_config_btn">
+                                        提交
+                                    </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Modal::m_modal_edit_config-->
                 </div>
             </div>
         </div>

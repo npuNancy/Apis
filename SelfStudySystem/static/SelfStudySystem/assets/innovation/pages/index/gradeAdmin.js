@@ -8,6 +8,7 @@ $(document).ready(function() {
                 $("#my_grade").text("负责年级：" + data.grade);
                 show_class(data.classes);
                 show_users(data.users);
+                classDelete(); // 删除班级
             } else {
                 console.log(data.reason);
             }
@@ -15,7 +16,6 @@ $(document).ready(function() {
     });
 
     classAdd(); // 添加班级
-    classDelete(); // 删除班级
     infoAdd(); // 批量添加学生信息
     changePassword(); // 更改密码
     logout();
@@ -37,6 +37,7 @@ var show_class = function(classList) {
     tbody.append(html);
 }
 
+// 显示班级负责人列表
 var show_users = function(userList) {
     var tbody = $("#tbody_user");
     var html = '';
@@ -117,7 +118,7 @@ var logout = function() {
                     alert("请求失败！");
                 } else {
                     console.log("logout success");
-                    window.location.href = "http://127.0.0.1:8000/gradeAdminIndex";
+                    window.location.href = "/gradeAdminIndex";
                 }
             }
         });

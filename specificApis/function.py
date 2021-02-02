@@ -23,11 +23,11 @@ class MyEncoder(json.JSONEncoder):
 
 
 class config():
-    startTime = '8:30:00'
-    endTime = '22:30:00'
-    atMostTime = 3.0  # hours
-    pointsPerHour = 1.0  # 1.0 point per hour
-    requiredPoints = 120.0
+    conf = models.Config.objects.get(name='default')
+    startTime = str(conf.startTime)
+    endTime = str(conf.endTime)
+    requiredPoints = conf.requiredPoints
+    pointsPerHour = conf.pointsPerHour
 
 
 def retJson(obj=None, mycls=json.JSONEncoder, **kwargs):

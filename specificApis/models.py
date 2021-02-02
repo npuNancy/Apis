@@ -53,3 +53,11 @@ class StudentData(models.Model):
     startTime = models.DateTimeField(auto_now_add=True)
     endTime = models.DateTimeField(auto_now=True)
     date = models.DateField(auto_now_add=True)
+
+
+class Config(models.Model):
+    name = models.CharField(max_length=20, unique=True)
+    startTime = models.TimeField(blank=False)
+    endTime = models.TimeField(blank=False)
+    pointsPerHour = models.FloatField(default=1.0)
+    requiredPoints = models.IntegerField(default=160)

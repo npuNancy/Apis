@@ -8,7 +8,7 @@ $('.btn-accent').click(function() {
         var sexx = 0
     }
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/student/add",
+        url: "/api/specificApis/student/add",
         type: "POST",
         data: {
             'name': $('#name').val(),
@@ -21,11 +21,11 @@ $('.btn-accent').click(function() {
         success: function(data) {
             if (!data.error) {
                 alert("成功添加！");
-                window.location.href = 'http://127.0.0.1:8000/manageClass';
+                window.location.href = '/manageClass';
             } else {
                 console.log(data.reason);
                 alert("失败！\n原因：" + data.reason);
-                window.location.href = 'http://127.0.0.1:8000/manageClass';
+                window.location.href = '/manageClass';
             }
         }
     });

@@ -2,7 +2,7 @@
 $(document).ready(function() {
     var classNumber;
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/user/getUserClassNumber",
+        url: "/api/specificApis/user/getUserClassNumber",
         type: "POST",
         async: false,
         success: function(data) {
@@ -15,7 +15,7 @@ $(document).ready(function() {
         }
     });
     $(this).ajaxSubmit({
-        url: "http://127.0.0.1:8000/api/specificApis/show/getClassData",
+        url: "/api/specificApis/show/getClassData",
         type: "POST",
         data: {
             'classNumber': classNumber
@@ -53,7 +53,7 @@ var btn_edit = function() {
         var tr = $(this).parents('tr');
         var studentId = tr.attr('data-studentId');
         // 转到编辑页面
-        window.location.href = 'http://127.0.0.1:8000/studentEdit?studentId=' + studentId;
+        window.location.href = '/studentEdit?studentId=' + studentId;
     });
 };
 
@@ -64,7 +64,7 @@ var btn_delete = function() {
             var tr = $(this).parents('tr');
             var studentId = tr.attr('data-studentId');
             $(this).ajaxSubmit({
-                url: "http://127.0.0.1:8000/api/specificApis/student/delete",
+                url: "/api/specificApis/student/delete",
                 type: "POST",
                 data: {
                     "studentId": studentId
@@ -72,7 +72,7 @@ var btn_delete = function() {
                 success: function(data) {
                     if (!data.error) {
                         console.log("success");
-                        window.location.href = 'http://127.0.0.1:8000/manageClass'
+                        window.location.href = '/manageClass'
                     } else {
                         console.log(data.reason);
                         alert("失败！\n");
